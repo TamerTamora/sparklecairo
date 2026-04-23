@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sparkle — Mobile Jewelry Cleaning, Cairo</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,300;1,600;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:    #1C1108;
+  --gold:   #C8972A;
+  --gold-l: #F0D080;
+  --warm:   #F7F0E6;
+  --sand:   #EAD9BF;
+  --rust:   #B84A1E;
+  --cream:  #FBF7F1;
+  --muted:  #5A4A35;
+  --white:  #FFFFFF;
+  --header-h: 84px;
+}
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
+a, button, input, select, textarea { touch-action: manipulation; }
+
+/* ===== SPARKLE CANVAS ===== */
+#fx { position: fixed; inset: 0; pointer-events: none; z-index: 900; }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 60px;
+  background: rgba(251,247,241,0.93);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(200,151,42,0.18);
+}
+.logo {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem; font-weight: 700;
+  color: var(--ink); text-decoration: none;
+  display: flex; align-items: center; gap: 10px;
+}
+.logo-star { color: var(--gold); animation: spin 6s linear infinite; display: inline-block; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+.nav-links a {
+  font-size: 0.85rem; font-weight: 500; color: var(--muted);
+  text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-book {
+  background: var(--gold); color: var(--white) !important;
+  padding: 10px 22px; border-radius: 100px; font-weight: 600 !important;
+  font-size: 0.82rem !important; transition: background 0.25s, transform 0.25s !important;
+  box-shadow: 0 4px 16px rgba(200,151,42,0.35);
+}
+.nav-book:hover { background: #A67820 !important; transform: translateY(-2px); }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 120px 60px 80px;
+  gap: 60px;
+  position: relative; overflow: hidden;
+}
+
+/* diagonal bg split */
+.hero::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 52%; height: 100%;
+  background: linear-gradient(160deg, #F5E8C8 0%, #EDD9A3 60%, #E0C880 100%);
+  clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+  z-index: 0;
+}
+
+.hero-left { position: relative; z-index: 2; }
+.hero-right { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--rust);
+  background: rgba(184,74,30,0.08); padding: 7px 16px;
+  border-radius: 100px; margin-bottom: 28px;
+  animation: fadeUp 0.7s ease 0.1s both;
+}
+.hero-eyebrow span { animation: blink 2s ease infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.hero-h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  font-weight: 700; line-height: 1.0;
+  color: var(--ink);
+  animation: fadeUp 0.7s ease 0.25s both;
+  margin-bottom: 26px;
+}
+.hero-h1 em {
+  font-style: italic; font-weight: 300;
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-size: 1rem; font-weight: 400; line-height: 1.8;
+  color: var(--muted); max-width: 440px;
+  animation: fadeUp 0.7s ease 0.4s both;
+  margin-bottom: 44px;
+}
+
+.hero-actions {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  animation: fadeUp 0.7s ease 0.55s both;
+}
+.btn-gold {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--gold); color: white;
+  padding: 15px 32px; border-radius: 100px;
+  font-size: 0.9rem; font-weight: 600; text-decoration: none;
+  box-shadow: 0 6px 24px rgba(200,151,42,0.4);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+.btn-gold:hover { transform: translateY(-3px); background: #A67820; box-shadow: 0 12px 32px rgba(200,151,42,0.45); }
+.btn-wa {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: #25D366; color: white;
+  padding: 15px 32px; border-radius: 100px;
+  font-size: 0.9rem; font-weight: 600; text-decoration: none;
+  box-shadow: 0 6px 24px rgba(37,211,102,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.btn-wa:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(37,211,102,0.4); }
+
+/* hero right — visual */
+.hero-visual {
+  display: flex; flex-direction: column; align-items: center; gap: 24px;
+  animation: fadeUp 0.7s ease 0.3s both;
+}
+.ring-anim {
+  position: relative; width: 260px; height: 260px;
+}
+.ring-anim .ring {
+  position: absolute; border-radius: 50%;
+  border: 2px solid rgba(200,151,42,0.3);
+  animation: ringPulse 3s ease-in-out infinite;
+}
+.ring:nth-child(1) { inset: 0; animation-delay: 0s; }
+.ring:nth-child(2) { inset: 20px; animation-delay: 0.4s; }
+.ring:nth-child(3) { inset: 40px; animation-delay: 0.8s; }
+@keyframes ringPulse {
+  0%,100%{ border-color: rgba(200,151,42,0.25); transform: scale(1); }
+  50%{ border-color: rgba(200,151,42,0.55); transform: scale(1.03); }
+}
+.ring-center {
+  position: absolute; inset: 60px;
+  background: linear-gradient(135deg, var(--gold), #E8B830);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3.5rem;
+  box-shadow: 0 12px 40px rgba(200,151,42,0.5);
+  animation: gemFloat 4s ease-in-out infinite;
+}
+@keyframes gemFloat { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-12px); } }
+
+.bubbles {
+  position: absolute; inset: 0; pointer-events: none;
+}
+.bubble {
+  position: absolute; border-radius: 50%;
+  background: rgba(200,151,42,0.12);
+  animation: floatBubble var(--d,4s) ease-in-out infinite;
+  animation-delay: var(--dl,0s);
+}
+@keyframes floatBubble {
+  0%,100%{ transform: translateY(0) scale(1); opacity: 0.7; }
+  50%{ transform: translateY(-18px) scale(1.1); opacity: 1; }
+}
+
+.hero-proof {
+  display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
+}
+.proof-chip {
+  background: white; border-radius: 14px;
+  padding: 14px 20px; text-align: center;
+  box-shadow: 0 4px 16px rgba(28,17,8,0.08);
+}
+.proof-num {
+  font-family: 'Fraunces', serif;
+  font-size: 1.6rem; font-weight: 700; color: var(--gold); line-height: 1;
+}
+.proof-label { font-size: 0.72rem; font-weight: 500; color: var(--muted); margin-top: 4px; }
+
+/* ===== WHAT IS ULTRASONIC ===== */
+.explainer {
+  padding: 110px 60px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.explainer-visual {
+  background: var(--ink);
+  border-radius: 32px; padding: 56px 48px;
+  position: relative; overflow: hidden;
+  box-shadow: 0 30px 80px rgba(28,17,8,0.2);
+}
+.explainer-visual::before {
+  content: '';
+  position: absolute; top: -60px; right: -60px;
+  width: 250px; height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,151,42,0.2), transparent);
+}
+.wave-anim {
+  display: flex; gap: 6px; align-items: flex-end;
+  height: 60px; margin-bottom: 32px; position: relative; z-index: 1;
+}
+.wave-bar {
+  width: 8px; border-radius: 4px;
+  background: var(--gold);
+  animation: waveBar 1.2s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+}
+@keyframes waveBar {
+  0%,100%{ height: 12px; opacity: 0.4; }
+  50%{ height: 48px; opacity: 1; }
+}
+.explainer-visual h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.9rem; font-weight: 700;
+  color: white; line-height: 1.2; margin-bottom: 16px;
+  position: relative; z-index: 1;
+}
+.explainer-visual h3 em { font-style: italic; color: var(--gold-l); }
+.explainer-visual p {
+  font-size: 0.88rem; line-height: 1.85;
+  color: rgba(255,255,255,0.85);
+  font-weight: 400; position: relative; z-index: 1;
+}
+
+.explainer-right {}
+.section-eyebrow {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gold);
+  display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+}
+.section-eyebrow::before { content: ''; width: 32px; height: 2px; background: var(--gold); border-radius: 2px; }
+.section-h {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 700; color: var(--ink); line-height: 1.15;
+  margin-bottom: 20px;
+}
+.section-h em { font-style: italic; color: var(--gold); }
+.section-p {
+  font-size: 0.92rem; line-height: 1.85;
+  color: var(--muted); font-weight: 400; margin-bottom: 40px;
+}
+
+.results-list { display: flex; flex-direction: column; gap: 14px; }
+.result-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  background: white; border-radius: 16px; padding: 18px 20px;
+  box-shadow: 0 2px 12px rgba(28,17,8,0.06);
+  border-left: 3px solid var(--gold);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.result-item:hover { transform: translateX(6px); box-shadow: 0 6px 24px rgba(28,17,8,0.1); }
+.result-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
+.result-text { font-size: 0.86rem; font-weight: 500; color: var(--ink); line-height: 1.5; }
+.result-text span { display: block; font-size: 0.78rem; font-weight: 400; color: var(--muted); margin-top: 3px; }
+
+/* ===== HOW IT WORKS ===== */
+.how {
+  background: var(--warm);
+  padding: 110px 60px;
+  position: relative; overflow: hidden;
+}
+.how::after {
+  content: '🚗';
+  position: absolute; font-size: 18rem;
+  opacity: 0.035; right: -40px; bottom: -30px;
+  transform: scaleX(-1); pointer-events: none;
+  line-height: 1;
+}
+.how-header { text-align: center; max-width: 560px; margin: 0 auto 70px; }
+.steps {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 0; position: relative;
+}
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 36px; left: 10%; right: 10%; height: 2px;
+  background: repeating-linear-gradient(90deg, var(--gold) 0px, var(--gold) 8px, transparent 8px, transparent 16px);
+  z-index: 0;
+}
+.step {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; padding: 0 20px;
+  position: relative; z-index: 1;
+}
+.step-num {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--gold); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 700;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(200,151,42,0.4);
+  transition: transform 0.3s;
+}
+.step:hover .step-num { transform: scale(1.1); }
+.step-icon { font-size: 1.6rem; margin-bottom: 6px; }
+.step-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem; font-weight: 600; color: var(--ink); margin-bottom: 10px;
+}
+.step-desc { font-size: 0.82rem; font-weight: 400; color: var(--muted); line-height: 1.7; }
+
+/* time badge */
+.time-badge {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; margin-top: 60px;
+}
+.time-pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--ink); color: white;
+  padding: 14px 28px; border-radius: 100px;
+  font-size: 0.9rem; font-weight: 600;
+  box-shadow: 0 8px 24px rgba(28,17,8,0.2);
+}
+.time-pill .t { color: var(--gold-l); }
+
+/* ===== WHAT GETS CLEAN ===== */
+.whatclean {
+  padding: 110px 60px;
+}
+.whatclean-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 20px; margin-top: 56px;
+}
+.clean-card {
+  background: white; border-radius: 24px; padding: 36px 32px;
+  box-shadow: 0 4px 20px rgba(28,17,8,0.06);
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+  border-top: 3px solid var(--sand);
+  position: relative; overflow: hidden;
+}
+.clean-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: var(--gold); transform: scaleX(0);
+  transition: transform 0.3s; transform-origin: left;
+}
+.clean-card:hover { transform: translateY(-7px); box-shadow: 0 16px 48px rgba(28,17,8,0.1); }
+.clean-card:hover::after { transform: scaleX(1); }
+.clean-icon { font-size: 2.4rem; margin-bottom: 18px; }
+.clean-name {
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 10px;
+}
+.clean-desc { font-size: 0.83rem; font-weight: 400; color: var(--muted); line-height: 1.7; }
+.clean-result {
+  margin-top: 16px; font-size: 0.75rem; font-weight: 600;
+  color: var(--gold); letter-spacing: 0.05em;
+}
+
+/* ===== AREAS ===== */
+.areas {
+  background: var(--ink); padding: 100px 60px;
+  position: relative; overflow: hidden;
+}
+.areas::before {
+  content: '';
+  position: absolute; top: -100px; right: -100px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,151,42,0.12), transparent);
+}
+.areas-header { max-width: 560px; margin-bottom: 52px; }
+.areas-header .section-eyebrow { color: var(--gold-l); }
+.areas-header .section-eyebrow::before { background: var(--gold-l); }
+.areas-header .section-h { color: white; }
+.areas-header .section-h em { color: var(--gold-l); }
+.areas-header .section-p { color: rgba(255,255,255,0.75); }
+
+.area-chips { display: flex; flex-wrap: wrap; gap: 12px; }
+.area-chip {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.07);
+  border: 1.5px solid rgba(200,151,42,0.25);
+  border-radius: 100px; padding: 12px 22px;
+  font-size: 0.85rem; font-weight: 500; color: rgba(255,255,255,0.85);
+  transition: all 0.25s; cursor: default;
+}
+.area-chip:hover { background: var(--gold); color: white; border-color: var(--gold); }
+.area-chip.more {
+  border-style: dashed; color: rgba(255,255,255,0.45);
+  font-style: italic; font-size: 0.8rem;
+}
+
+/* ===== TESTIMONIALS ===== */
+.testi { padding: 110px 60px; }
+.testi-header { margin-bottom: 52px; }
+.testi-scroll {
+  display: flex; gap: 22px; overflow-x: auto;
+  padding-bottom: 12px; scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+.testi-scroll::-webkit-scrollbar { display: none; }
+.tcard {
+  min-width: 340px; background: white; border-radius: 24px; padding: 38px;
+  scroll-snap-align: start; flex-shrink: 0;
+  box-shadow: 0 4px 20px rgba(28,17,8,0.07);
+  transition: transform 0.3s; border-top: 3px solid var(--gold);
+}
+.tcard:hover { transform: translateY(-5px); }
+.tcard-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 3px; margin-bottom: 18px; }
+.tcard-text {
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-size: 1rem; font-weight: 300; line-height: 1.75;
+  color: var(--ink); margin-bottom: 24px;
+}
+.tcard-author { display: flex; align-items: center; gap: 12px; }
+.tcard-av {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), #A67820);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; color: white;
+  flex-shrink: 0;
+}
+.tcard-name { font-size: 0.87rem; font-weight: 600; color: var(--ink); }
+.tcard-loc { font-size: 0.74rem; color: var(--muted); margin-top: 2px; }
+.tcard-tag {
+  margin-top: 16px; font-size: 0.7rem; font-weight: 600;
+  color: var(--rust); background: rgba(184,74,30,0.08);
+  display: inline-block; padding: 4px 12px; border-radius: 100px;
+}
+.testi-nav { display: flex; gap: 10px; margin-top: 28px; }
+.tnav-btn {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 2px solid rgba(28,17,8,0.15); background: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; cursor: pointer; color: var(--ink);
+  transition: all 0.25s;
+}
+.tnav-btn:hover { background: var(--gold); color: white; border-color: var(--gold); }
+
+/* ===== BOOKING ===== */
+.booking {
+  background: linear-gradient(160deg, var(--warm) 0%, #EDD9A3 100%);
+  padding: 110px 60px;
+}
+.booking-inner {
+  max-width: 960px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: start;
+}
+.booking-left {}
+.booking-left .section-h { margin-bottom: 16px; }
+.booking-left .section-p { margin-bottom: 32px; }
+
+.wa-block {
+  background: #25D366; border-radius: 20px; padding: 28px 28px;
+  display: flex; gap: 18px; align-items: center;
+  box-shadow: 0 8px 28px rgba(37,211,102,0.25);
+  margin-bottom: 20px; text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.wa-block:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(37,211,102,0.35); }
+.wa-icon { font-size: 2rem; flex-shrink: 0; }
+.wa-text-wrap {}
+.wa-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 4px; }
+.wa-number { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 700; color: white; }
+.wa-sub { font-size: 0.78rem; color: rgba(255,255,255,0.8); margin-top: 3px; }
+
+.or-divider {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 0.75rem; font-weight: 600; color: var(--muted);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.or-divider::before, .or-divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: rgba(90,74,53,0.25);
+}
+
+.info-chips { display: flex; flex-direction: column; gap: 12px; }
+.info-chip {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 0.83rem; font-weight: 400; color: var(--muted);
+}
+.info-chip span { font-size: 1.1rem; }
+
+/* form */
+.booking-form {
+  background: white; border-radius: 28px; padding: 40px;
+  box-shadow: 0 16px 60px rgba(28,17,8,0.1);
+}
+.form-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.3rem; font-weight: 700; color: var(--ink);
+  margin-bottom: 28px;
+}
+.f-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+.f-label { font-size: 0.74rem; font-weight: 600; color: var(--ink); letter-spacing: 0.03em; }
+.f-input, .f-select, .f-textarea {
+  padding: 13px 16px;
+  border: 2px solid rgba(28,17,8,0.1);
+  border-radius: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem; font-weight: 400; color: var(--ink);
+  outline: none; transition: border-color 0.25s, box-shadow 0.25s;
+  background: #FDFAF5;
+}
+.f-input::placeholder { color: #A09080; }
+.f-input:focus, .f-select:focus, .f-textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(200,151,42,0.12);
+  background: white;
+}
+.f-textarea { resize: vertical; min-height: 90px; }
+.f-select {
+  appearance: none; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1L6 7L11 1' stroke='%235A4A35' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+  padding-right: 38px; background-color: #FDFAF5;
+}
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.f-submit {
+  width: 100%; padding: 16px;
+  background: var(--gold); color: white; border: none;
+  border-radius: 14px; font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem; font-weight: 600; cursor: pointer;
+  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 6px 20px rgba(200,151,42,0.35);
+  margin-top: 6px;
+}
+.f-submit:hover { background: #A67820; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(200,151,42,0.45); }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--ink); color: white; padding: 60px 60px 36px;
+  display: flex; flex-direction: column; gap: 40px;
+}
+.footer-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  flex-wrap: wrap; gap: 40px;
+}
+.footer-brand {
+  font-family: 'Fraunces', serif;
+  font-size: 1.4rem; font-weight: 700; color: white;
+  display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
+}
+.footer-brand span { color: var(--gold); }
+.footer-about { font-size: 0.82rem; color: rgba(255,255,255,0.7); line-height: 1.8; max-width: 240px; }
+.footer-links-group {}
+.footer-links-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 0.83rem; color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold-l); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px;
+  flex-wrap: wrap; gap: 14px;
+}
+.footer-copy { font-size: 0.74rem; color: rgba(255,255,255,0.55); }
+.footer-socials { display: flex; gap: 10px; }
+.soc-btn {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.75); font-size: 0.75rem; font-weight: 600;
+  text-decoration: none; transition: all 0.25s;
+}
+.soc-btn:hover { background: var(--gold); color: white; }
+
+/* sticky WhatsApp */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 300;
+  background: #25D366; color: white;
+  width: 58px; height: 58px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; text-decoration: none;
+  box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+  animation: waPop 0.5s cubic-bezier(0.34,1.56,0.64,1) 1.5s both;
+  transition: transform 0.3s;
+}
+.wa-float:hover { transform: scale(1.12); }
+@keyframes waPop { from{ transform: scale(0); } to{ transform: scale(1); } }
+.wa-float-label {
+  position: absolute; right: 70px;
+  background: var(--ink); color: white;
+  font-size: 0.75rem; font-weight: 600;
+  padding: 7px 14px; border-radius: 100px;
+  white-space: nowrap; opacity: 0;
+  transition: opacity 0.25s; pointer-events: none;
+}
+.wa-float:hover .wa-float-label { opacity: 1; }
+
+/* ===== PRICING ===== */
+.pricing {
+  background: var(--ink);
+  padding: 110px 60px;
+  position: relative; overflow: hidden;
+}
+.pricing::before {
+  content: '';
+  position: absolute; bottom: -120px; left: -120px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,151,42,0.1), transparent);
+}
+.pricing-header { text-align: center; margin-bottom: 64px; position: relative; z-index: 1; }
+.pricing-header .section-eyebrow { color: var(--gold-l); justify-content: center; }
+.pricing-header .section-eyebrow::before { background: var(--gold-l); }
+.pricing-header .section-h { color: white; }
+.pricing-header .section-h em { color: var(--gold-l); }
+.pricing-header .section-p { color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto; }
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  position: relative; z-index: 1;
+  max-width: 1000px; margin: 0 auto;
+}
+
+.price-card {
+  background: rgba(255,255,255,0.05);
+  border: 1.5px solid rgba(200,151,42,0.2);
+  border-radius: 28px; padding: 44px 36px;
+  display: flex; flex-direction: column;
+  transition: transform 0.3s, background 0.3s, border-color 0.3s;
+  position: relative; overflow: hidden;
+}
+.price-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(200,151,42,0.5);
+}
+.price-card.featured {
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: scale(1.04);
+  box-shadow: 0 24px 60px rgba(200,151,42,0.35);
+}
+.price-card.featured:hover { transform: scale(1.04) translateY(-6px); }
+
+.price-badge {
+  display: inline-block;
+  background: var(--ink); color: var(--gold);
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 5px 12px; border-radius: 100px;
+  margin-bottom: 24px; align-self: flex-start;
+}
+.price-card.featured .price-badge { background: rgba(28,17,8,0.25); color: white; }
+
+.price-name {
+  font-family: 'Fraunces', serif;
+  font-size: 1.3rem; font-weight: 700;
+  color: white; margin-bottom: 8px;
+}
+.price-card.featured .price-name { color: var(--ink); }
+
+.price-tagline {
+  font-size: 0.8rem; color: rgba(255,255,255,0.8);
+  font-weight: 400; line-height: 1.5; margin-bottom: 32px;
+}
+.price-card.featured .price-tagline { color: rgba(28,17,8,0.75); }
+
+.price-amount {
+  display: flex; align-items: flex-end; gap: 6px;
+  margin-bottom: 6px;
+}
+.price-num {
+  font-family: 'Fraunces', serif;
+  font-size: 3.2rem; font-weight: 700; line-height: 1;
+  color: var(--gold-l);
+}
+.price-card.featured .price-num { color: var(--ink); }
+.price-currency {
+  font-size: 1rem; font-weight: 600; color: rgba(255,255,255,0.8);
+  margin-bottom: 8px;
+}
+.price-card.featured .price-currency { color: rgba(28,17,8,0.65); }
+
+.price-saving {
+  font-size: 0.75rem; font-weight: 600;
+  color: #7EDD9A; margin-bottom: 28px;
+}
+.price-card.featured .price-saving { color: rgba(28,17,8,0.7); }
+.price-no-saving { margin-bottom: 28px; height: 18px; } /* spacer */
+
+.price-divider {
+  height: 1px; background: rgba(255,255,255,0.1);
+  margin-bottom: 24px;
+}
+.price-card.featured .price-divider { background: rgba(28,17,8,0.15); }
+
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.price-features li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.84rem; font-weight: 400; color: rgba(255,255,255,0.75);
+}
+.price-card.featured .price-features li { color: rgba(28,17,8,0.8); }
+.price-features li::before {
+  content: '✓';
+  width: 20px; height: 20px; border-radius: 50%;
+  background: rgba(200,151,42,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 700; color: var(--gold-l);
+  flex-shrink: 0;
+}
+.price-card.featured .price-features li::before {
+  background: rgba(28,17,8,0.15); color: var(--ink);
+}
+
+.price-cta {
+  margin-top: 32px;
+  display: block; text-align: center;
+  padding: 14px; border-radius: 14px;
+  font-size: 0.88rem; font-weight: 600;
+  text-decoration: none; transition: all 0.25s;
+  background: rgba(200,151,42,0.15); color: var(--gold-l);
+  border: 1.5px solid rgba(200,151,42,0.3);
+}
+.price-cta:hover { background: var(--gold); color: white; border-color: var(--gold); }
+.price-card.featured .price-cta {
+  background: var(--ink); color: white; border-color: var(--ink);
+}
+.price-card.featured .price-cta:hover { background: #3A2A18; }
+
+/* per-piece note */
+.pricing-note {
+  text-align: center; margin-top: 40px;
+  font-size: 0.82rem; color: rgba(255,255,255,0.65);
+  position: relative; z-index: 1;
+}
+.pricing-note strong { color: rgba(255,255,255,0.9); }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from{ opacity:0; transform:translateY(28px); } to{ opacity:1; transform:translateY(0); } }
+.reveal { opacity:1; transform:none; transition: opacity 0.7s ease, transform 0.7s ease; }
+.js-ready .reveal { opacity:0; transform:translateY(28px); }
+.js-ready .reveal.in { opacity:1; transform:none; }
+.d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
+
+@media (max-width: 900px) {
+  :root { --header-h: 76px; }
+  nav { padding: 16px 20px; }
+  .logo { font-size: 1.3rem; }
+  .nav-links { display: none; }
+  .hero { min-height: auto; grid-template-columns: 1fr; padding: calc(var(--header-h) + 28px) 20px 60px; gap: 36px; }
+  .hero::before { width: 100%; clip-path: none; top: auto; bottom: 0; height: 40%; opacity: 0.5; }
+  .hero-right { order: -1; }
+  .hero-sub { max-width: none; }
+  .hero-actions { width: 100%; }
+  .btn-gold, .btn-wa { flex: 1 1 220px; justify-content: center; }
+  .hero-proof { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .proof-chip { padding: 14px 14px; }
+  .ring-anim { width: 180px; height: 180px; }
+  .ring-center { inset: 48px; font-size: 2.75rem; }
+  .explainer { grid-template-columns: 1fr; padding: 80px 20px; gap: 48px; }
+  .explainer-visual { padding: 40px 32px; }
+  .how { padding: 80px 20px; }
+  .steps { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .steps::before { display: none; }
+  .step { padding: 0 8px; }
+  .time-pill { flex-wrap: wrap; text-align: center; line-height: 1.5; }
+  .whatclean { padding: 80px 20px; }
+  .whatclean-grid { grid-template-columns: 1fr 1fr; }
+  .clean-card { padding: 30px 24px; }
+  .pricing { padding: 80px 20px; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
+  .price-card { padding: 36px 28px; }
+  .price-card.featured { transform: scale(1); }
+  .price-card.featured:hover { transform: translateY(-6px); }
+  .areas { padding: 80px 20px; }
+  .testi { padding: 80px 20px; }
+  .tcard { min-width: min(82vw, 340px); padding: 30px; }
+  .booking { padding: 80px 20px; }
+  .booking-inner { grid-template-columns: 1fr; gap: 36px; }
+  .wa-block { padding: 24px; }
+  .booking-form { padding: 32px 24px; }
+  .wa-float { right: 20px; bottom: calc(20px + env(safe-area-inset-bottom)); }
+  footer { padding: 48px 20px 28px; }
+  .footer-top { flex-direction: column; }
+}
+@media (max-width: 580px) {
+  :root { --header-h: 72px; }
+  nav { padding: 14px 16px; }
+  .logo { font-size: 1.15rem; gap: 8px; }
+  .hero { padding: calc(var(--header-h) + 18px) 16px 42px; gap: 28px; }
+  .hero::before { height: 36%; }
+  .hero-h1 { font-size: clamp(2.45rem, 13vw, 3.35rem); margin-bottom: 18px; }
+  .hero-sub { font-size: 0.95rem; line-height: 1.7; margin-bottom: 28px; }
+  .hero-actions { flex-direction: column; }
+  .btn-gold, .btn-wa { width: 100%; padding: 15px 22px; }
+  .hero-proof { grid-template-columns: 1fr; }
+  .ring-anim { width: 156px; height: 156px; }
+  .ring-center { inset: 40px; font-size: 2.4rem; }
+  .explainer, .how, .whatclean, .pricing, .areas, .testi, .booking { padding-left: 16px; padding-right: 16px; }
+  .explainer-visual { border-radius: 24px; padding: 32px 22px; }
+  .explainer-visual h3 { font-size: 1.6rem; }
+  .section-h { margin-bottom: 16px; }
+  .section-p { font-size: 0.9rem; margin-bottom: 28px; }
+  .result-item { padding: 16px; }
+  .whatclean-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .step-num { width: 64px; height: 64px; margin-bottom: 18px; }
+  .time-badge { margin-top: 40px; }
+  .time-pill { width: 100%; padding: 16px 18px; border-radius: 24px; }
+  .area-chip { width: 100%; justify-content: center; }
+  .tcard { min-width: 86vw; padding: 28px 22px; border-radius: 20px; }
+  .testi-nav { justify-content: center; }
+  .wa-block { flex-direction: column; align-items: flex-start; }
+  .wa-number { font-size: 1.05rem; }
+  .booking-form { padding: 28px 18px; border-radius: 22px; }
+  .f-row { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .wa-float { width: 54px; height: 54px; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); }
+  .wa-float-label { display: none; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="fx"></canvas>
+
+<!-- Sticky WhatsApp -->
+<a href="https://wa.me/201119691116?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20a%20jewelry%20cleaning%20visit." class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with Sparkle on WhatsApp">
+  <span>💬</span>
+  <span class="wa-float-label">Chat on WhatsApp</span>
+</a>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <span class="logo-star">✦</span> Sparkle
+  </a>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#areas">Cairo Areas</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#booking" class="nav-book">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <span>●</span> Now serving Cairo 🇪🇬
+    </div>
+    <h1 class="hero-h1">
+      Your jewelry,<br>
+      <em>sparkling</em><br>
+      in 30 minutes.
+    </h1>
+    <p class="hero-sub">
+      Egypt's first mobile ultrasonic jewelry cleaning service. Our specialist drives to you anywhere in Cairo — you watch, we clean, you're amazed.
+    </p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn-gold">✦ Book a Visit</a>
+      <a href="https://wa.me/201119691116?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20a%20jewelry%20cleaning%20visit." class="btn-wa" target="_blank" rel="noopener noreferrer">💬 WhatsApp Us</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="ring-anim">
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="bubbles">
+          <div class="bubble" style="width:14px;height:14px;top:10%;left:15%;--d:3.5s;--dl:0s"></div>
+          <div class="bubble" style="width:10px;height:10px;top:70%;left:8%;--d:5s;--dl:-1s"></div>
+          <div class="bubble" style="width:18px;height:18px;top:20%;right:10%;--d:4s;--dl:-2s"></div>
+          <div class="bubble" style="width:8px;height:8px;top:75%;right:15%;--d:6s;--dl:-0.5s"></div>
+        </div>
+        <div class="ring-center">💍</div>
+      </div>
+      <div class="hero-proof">
+        <div class="proof-chip">
+          <div class="proof-num">8k<span style="color:var(--rust)">+</span></div>
+          <div class="proof-label">Pieces Cleaned</div>
+        </div>
+        <div class="proof-chip">
+          <div class="proof-num">4.9<span style="color:var(--rust)">★</span></div>
+          <div class="proof-label">Rating</div>
+        </div>
+        <div class="proof-chip">
+          <div class="proof-num">30<span style="font-size:1rem;color:var(--rust)">min</span></div>
+          <div class="proof-label">Avg. Visit</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS ULTRASONIC -->
+<section class="explainer" id="about">
+  <div class="explainer-visual reveal">
+    <div class="wave-anim">
+      <div class="wave-bar" style="--d:0s"></div>
+      <div class="wave-bar" style="--d:0.1s"></div>
+      <div class="wave-bar" style="--d:0.2s"></div>
+      <div class="wave-bar" style="--d:0.3s"></div>
+      <div class="wave-bar" style="--d:0.4s"></div>
+      <div class="wave-bar" style="--d:0.3s"></div>
+      <div class="wave-bar" style="--d:0.2s"></div>
+      <div class="wave-bar" style="--d:0.1s"></div>
+      <div class="wave-bar" style="--d:0s"></div>
+    </div>
+    <h3>Sound waves that <em>dissolve dirt</em> in minutes.</h3>
+    <p>Ultrasonic cleaning uses high-frequency sound waves to create millions of microscopic bubbles that implode on contact with dirt, oils, and buildup — reaching every crevice a brush never could. It's the same technology used by professional jewelers worldwide.</p>
+  </div>
+  <div class="explainer-right reveal d1">
+    <p class="section-eyebrow">What You'll See</p>
+    <h2 class="section-h">The most dramatic<br><em>results</em> in jewelry care.</h2>
+    <p class="section-p">One cleaning session removes years of invisible buildup — the main reason your jewelry looks dull. The result is immediate and visible in seconds.</p>
+    <div class="results-list">
+      <div class="result-item">
+        <div class="result-icon">💎</div>
+        <div class="result-text">Diamonds that catch light again
+          <span>Oils from your skin coat diamonds over time and kill their sparkle — gone instantly.</span>
+        </div>
+      </div>
+      <div class="result-item">
+        <div class="result-icon">🟡</div>
+        <div class="result-text">Gold that glows like new
+          <span>Lotion, soap, and dust fill the surface — ultrasonic pulls it all out.</span>
+        </div>
+      </div>
+      <div class="result-item">
+        <div class="result-icon">⚪</div>
+        <div class="result-text">Silver that shines (light tarnish)
+          <span>Works best on surface dullness and dirt — deep black tarnish needs extra treatment.</span>
+        </div>
+      </div>
+      <div class="result-item">
+        <div class="result-icon">💍</div>
+        <div class="result-text">Every crevice, every setting
+          <span>Reaches where no brush can — under stones, inside band engravings, prong bases.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="how-header reveal">
+    <p class="section-eyebrow" style="justify-content:center;margin-bottom:14px">How It Works</p>
+    <h2 class="section-h" style="text-align:center">Four simple steps.<br><em>Zero effort on your part.</em></h2>
+  </div>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">1</div>
+      <div class="step-icon">📱</div>
+      <div class="step-title">Book Online or WhatsApp</div>
+      <div class="step-desc">Choose your date, time, and Cairo area. Takes 2 minutes. We confirm within the hour.</div>
+    </div>
+    <div class="step reveal d1">
+      <div class="step-num">2</div>
+      <div class="step-icon">🚗</div>
+      <div class="step-title">We Drive to You</div>
+      <div class="step-desc">Our specialist arrives at your home, compound, or office with the full ultrasonic setup in the car.</div>
+    </div>
+    <div class="step reveal d2">
+      <div class="step-num">3</div>
+      <div class="step-icon">👀</div>
+      <div class="step-title">Watch It Happen</div>
+      <div class="step-desc">You stand right there. We clean your jewelry in front of you — nothing leaves your sight.</div>
+    </div>
+    <div class="step reveal d3">
+      <div class="step-num">4</div>
+      <div class="step-icon">✨</div>
+      <div class="step-title">Take It Back Sparkling</div>
+      <div class="step-desc">Done in ~30 minutes. Pay by cash or card. We leave, you enjoy your jewelry looking brand new.</div>
+    </div>
+  </div>
+  <div class="time-badge reveal">
+    <div class="time-pill">⏱ Average visit: <span class="t">&nbsp;30 – 45 minutes</span> &nbsp;·&nbsp; 7 days a week, 9am – 8pm</div>
+  </div>
+</section>
+
+<!-- WHAT WE CLEAN -->
+<section class="whatclean">
+  <p class="section-eyebrow reveal">What We Clean</p>
+  <h2 class="section-h reveal">Works best on <em>these pieces.</em></h2>
+  <div class="whatclean-grid">
+    <div class="clean-card reveal">
+      <div class="clean-icon">💍</div>
+      <div class="clean-name">Gold Rings</div>
+      <div class="clean-desc">Yellow, rose, or white gold — wedding bands, engagement rings, everyday rings. The most dramatic results.</div>
+      <div class="clean-result">★ Best results</div>
+    </div>
+    <div class="clean-card reveal d1">
+      <div class="clean-icon">⌚</div>
+      <div class="clean-name">Gold Bracelets & Bangles</div>
+      <div class="clean-desc">Hollow, solid, chain-style — all benefit hugely. Gets into every link and crevice instantly.</div>
+      <div class="clean-result">★ Best results</div>
+    </div>
+    <div class="clean-card reveal d2">
+      <div class="clean-icon">📿</div>
+      <div class="clean-name">Gold Necklaces</div>
+      <div class="clean-desc">Even delicate chains with years of buildup come out looking brand new. Safe on all chain types.</div>
+      <div class="clean-result">★ Best results</div>
+    </div>
+    <div class="clean-card reveal">
+      <div class="clean-icon">💎</div>
+      <div class="clean-name">Diamond Jewelry</div>
+      <div class="clean-desc">Restores the fire and brilliance to diamonds clouded by oils and daily wear. Like looking through clean glass again.</div>
+      <div class="clean-result">★ Dramatic results</div>
+    </div>
+    <div class="clean-card reveal d1">
+      <div class="clean-icon">🥈</div>
+      <div class="clean-name">Silver (Light Tarnish)</div>
+      <div class="clean-desc">Works well on dull, dirty silver. For deeply blackened silver we'll be honest with you — it may need extra chemical treatment.</div>
+      <div class="clean-result">✓ Good results</div>
+    </div>
+    <div class="clean-card reveal d2">
+      <div class="clean-icon">💛</div>
+      <div class="clean-name">Earrings & Pendants</div>
+      <div class="clean-desc">Studs, hoops, dangles — all cleaned safely. Gets buildup off the backs of earrings too.</div>
+      <div class="clean-result">★ Best results</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-header reveal">
+    <p class="section-eyebrow">Pricing</p>
+    <h2 class="section-h">Simple, honest <em>pricing.</em></h2>
+    <p class="section-p">Pay per piece, or save more with a bundle. The more you bring, the better the deal — and we're already at your door anyway.</p>
+  </div>
+
+  <div class="pricing-grid">
+
+    <!-- Per piece -->
+    <div class="price-card reveal">
+      <span class="price-badge">Per Piece</span>
+      <div class="price-name">Single Clean</div>
+      <div class="price-tagline">Perfect if you have one or two pieces to freshen up.</div>
+      <div class="price-amount">
+        <span class="price-num">250</span>
+        <span class="price-currency">EGP</span>
+      </div>
+      <div class="price-no-saving"></div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>1 piece cleaned on the spot</li>
+        <li>Ultrasonic deep clean</li>
+        <li>Specialist comes to you</li>
+        <li>Done in ~10 minutes</li>
+        <li>Pay cash or card</li>
+      </ul>
+      <a href="#booking" class="price-cta">Book Now</a>
+    </div>
+
+    <!-- Bundle 3 — featured -->
+    <div class="price-card featured reveal d1">
+      <span class="price-badge">★ Most Popular</span>
+      <div class="price-name">3-Piece Bundle</div>
+      <div class="price-tagline">The sweet spot — clean your rings, bracelet, and necklace in one visit.</div>
+      <div class="price-amount">
+        <span class="price-num">600</span>
+        <span class="price-currency">EGP</span>
+      </div>
+      <div class="price-saving">You save 150 EGP vs. per piece</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>3 pieces cleaned on the spot</li>
+        <li>Ultrasonic deep clean</li>
+        <li>Specialist comes to you</li>
+        <li>Done in ~20 minutes</li>
+        <li>Pay cash or card</li>
+        <li>150 EGP saved</li>
+      </ul>
+      <a href="#booking" class="price-cta">Book This Bundle</a>
+    </div>
+
+    <!-- Bundle 5 -->
+    <div class="price-card reveal d2">
+      <span class="price-badge">Best Value</span>
+      <div class="price-name">5-Piece Bundle</div>
+      <div class="price-tagline">Clean your full collection in one visit — the whole family benefits.</div>
+      <div class="price-amount">
+        <span class="price-num">900</span>
+        <span class="price-currency">EGP</span>
+      </div>
+      <div class="price-saving">You save 350 EGP vs. per piece</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>5 pieces cleaned on the spot</li>
+        <li>Ultrasonic deep clean</li>
+        <li>Specialist comes to you</li>
+        <li>Done in ~30 minutes</li>
+        <li>Pay cash or card</li>
+        <li>350 EGP saved</li>
+      </ul>
+      <a href="#booking" class="price-cta">Book This Bundle</a>
+    </div>
+
+  </div>
+
+  <p class="pricing-note reveal">
+    Have more than 5 pieces? <strong>WhatsApp us</strong> — we'll work out a custom price for your full collection.
+  </p>
+</section>
+
+<!-- AREAS -->
+<section class="areas" id="areas">
+  <div class="areas-header reveal">
+    <p class="section-eyebrow">Where We Go</p>
+    <h2 class="section-h">We cover <em>all of Cairo.</em></h2>
+    <p class="section-p">Starting with Greater Cairo. If your area isn't listed, WhatsApp us — we'll do our best to reach you.</p>
+  </div>
+  <div class="area-chips reveal">
+    <div class="area-chip">🗺 Zamalek</div>
+    <div class="area-chip">🗺 Maadi</div>
+    <div class="area-chip">🗺 Heliopolis</div>
+    <div class="area-chip">🗺 New Cairo</div>
+    <div class="area-chip">🗺 5th Settlement</div>
+    <div class="area-chip">🗺 Nasr City</div>
+    <div class="area-chip">🗺 Mohandessin</div>
+    <div class="area-chip">🗺 Dokki</div>
+    <div class="area-chip">🗺 Rehab City</div>
+    <div class="area-chip">🗺 Shorouk</div>
+    <div class="area-chip">🗺 Downtown Cairo</div>
+    <div class="area-chip">🗺 Garden City</div>
+    <div class="area-chip more">+ WhatsApp us for other areas</div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi" id="reviews">
+  <div class="testi-header">
+    <p class="section-eyebrow reveal">What Clients Say</p>
+    <h2 class="section-h reveal">They watched.<br>They were <em>amazed.</em></h2>
+  </div>
+  <div class="testi-scroll" id="ts">
+    <div class="tcard">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-text">"I genuinely couldn't believe what I was seeing. My ring looked like it had just come out of the jewelry shop. And they did it in my living room in 20 minutes."</p>
+      <div class="tcard-author">
+        <div class="tcard-av">N</div>
+        <div><div class="tcard-name">Nadia Hassan</div><div class="tcard-loc">Zamalek, Cairo</div></div>
+      </div>
+      <div class="tcard-tag">Gold Ring</div>
+    </div>
+    <div class="tcard">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-text">"My grandmother's gold set hadn't sparkled in years. Watching them clean it was actually exciting — the dirt just dissolved. She cried when she saw it."</p>
+      <div class="tcard-author">
+        <div class="tcard-av">S</div>
+        <div><div class="tcard-name">Sara Mahmoud</div><div class="tcard-loc">Maadi, Cairo</div></div>
+      </div>
+      <div class="tcard-tag">Gold Jewelry Set</div>
+    </div>
+    <div class="tcard">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-text">"Booked on WhatsApp, they came to my compound in New Cairo the next morning. Super professional setup. My diamond ring looks absolutely insane now."</p>
+      <div class="tcard-author">
+        <div class="tcard-av">R</div>
+        <div><div class="tcard-name">Rana El-Sherif</div><div class="tcard-loc">New Cairo</div></div>
+      </div>
+      <div class="tcard-tag">Diamond Ring</div>
+    </div>
+    <div class="tcard">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-text">"What I liked most — my jewelry never left my hands until it came back sparkling. No trust issues, no anxiety. Just results. Booked again for the whole family."</p>
+      <div class="tcard-author">
+        <div class="tcard-av">D</div>
+        <div><div class="tcard-name">Dina Fouad</div><div class="tcard-loc">Heliopolis, Cairo</div></div>
+      </div>
+      <div class="tcard-tag">Full Collection</div>
+    </div>
+    <div class="tcard">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-text">"I was skeptical. Then I saw my bracelet go from dull to mirror-bright in literally 8 minutes. I called my neighbor over and she booked on the spot too."</p>
+      <div class="tcard-author">
+        <div class="tcard-av">M</div>
+        <div><div class="tcard-name">Mona Adel</div><div class="tcard-loc">Mohandessin, Cairo</div></div>
+      </div>
+      <div class="tcard-tag">Gold Bracelet</div>
+    </div>
+  </div>
+  <div class="testi-nav">
+    <button class="tnav-btn" id="tLeft">←</button>
+    <button class="tnav-btn" id="tRight">→</button>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div class="booking-inner">
+    <div class="booking-left">
+      <p class="section-eyebrow reveal">Book Your Visit</p>
+      <h2 class="section-h reveal">Two ways<br>to <em>book.</em></h2>
+      <p class="section-p reveal">WhatsApp is fastest. The form works too — we'll confirm within the hour.</p>
+
+      <a href="https://wa.me/201119691116?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20a%20jewelry%20cleaning%20visit." class="wa-block reveal" target="_blank" rel="noopener noreferrer">
+        <div class="wa-icon">💬</div>
+        <div class="wa-text-wrap">
+          <div class="wa-label">Fastest option</div>
+          <div class="wa-number">+20 111 969 1116</div>
+          <div class="wa-sub">Tap to open WhatsApp — we reply within minutes</div>
+        </div>
+      </a>
+
+      <div class="or-divider reveal">or fill the form</div>
+
+      <div class="info-chips reveal">
+        <div class="info-chip"><span>📍</span> Greater Cairo only (for now)</div>
+        <div class="info-chip"><span>🕘</span> 7 days a week · 9am – 8pm</div>
+        <div class="info-chip"><span>💵</span> Pay by cash or card at the visit</div>
+        <div class="info-chip"><span>⏱</span> Same-day booking when available</div>
+      </div>
+    </div>
+
+    <div class="booking-form reveal d1">
+      <div class="form-title">Request a Visit</div>
+      <div class="f-row">
+        <div class="f-group">
+          <label class="f-label">First Name</label>
+          <input class="f-input" type="text" placeholder="Nadia">
+        </div>
+        <div class="f-group">
+          <label class="f-label">Last Name</label>
+          <input class="f-input" type="text" placeholder="Hassan">
+        </div>
+      </div>
+      <div class="f-group">
+        <label class="f-label">WhatsApp Number</label>
+          <input class="f-input" type="tel" placeholder="+20 111 969 1116">
+      </div>
+      <div class="f-row">
+        <div class="f-group">
+          <label class="f-label">Preferred Date</label>
+          <input class="f-input" type="date">
+        </div>
+        <div class="f-group">
+          <label class="f-label">Preferred Time</label>
+          <select class="f-select">
+            <option>Morning (9am – 12pm)</option>
+            <option>Afternoon (12pm – 4pm)</option>
+            <option>Evening (4pm – 8pm)</option>
+          </select>
+        </div>
+      </div>
+      <div class="f-group">
+        <label class="f-label">Your Area in Cairo</label>
+        <select class="f-select">
+          <option value="">Select your area…</option>
+          <option>Zamalek</option>
+          <option>Maadi</option>
+          <option>Heliopolis</option>
+          <option>New Cairo / 5th Settlement</option>
+          <option>Nasr City</option>
+          <option>Mohandessin</option>
+          <option>Dokki</option>
+          <option>Rehab City</option>
+          <option>Shorouk</option>
+          <option>Downtown Cairo</option>
+          <option>Garden City</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="f-group">
+        <label class="f-label">What jewelry? (optional)</label>
+        <textarea class="f-textarea" placeholder="e.g. 2 gold rings, 1 diamond necklace, silver bracelet…"></textarea>
+      </div>
+      <button class="f-submit" onclick="handleSubmit(this)">✦ Send My Request</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand"><span>✦</span> Sparkle</div>
+      <p class="footer-about">Egypt's first mobile ultrasonic jewelry cleaning service. We come to you, anywhere in Cairo.</p>
+    </div>
+    <div class="footer-links-group">
+      <div class="footer-links-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="#about">How It Works</a></li>
+        <li><a href="#areas">Cairo Areas</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#booking">Book a Visit</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-group">
+      <div class="footer-links-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="https://wa.me/201119691116?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20a%20jewelry%20cleaning%20visit." target="_blank" rel="noopener noreferrer">WhatsApp: +20 111 969 1116</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#1c74797070735c6f6c7d6e77707932797b"><span class="__cf_email__" data-cfemail="ff979a939390bf8c8f9e8d94939ad19a98">[email&#160;protected]</span></a></li>
+        <li><a href="#">Cairo, Egypt 🇪🇬</a></li>
+        <li><a href="#">7 days · 9am – 8pm</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2024 Sparkle Egypt. All rights reserved.</p>
+    <div class="footer-socials">
+      <a href="#" class="soc-btn">ig</a>
+      <a href="#" class="soc-btn">fb</a>
+      <a href="#" class="soc-btn">tk</a>
+      <a href="#" class="soc-btn">wa</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ---- Sparkle canvas ----
+const canvas = document.getElementById('fx');
+const ctx = canvas.getContext('2d');
+function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+resize(); window.addEventListener('resize', resize);
+
+const sparks = [];
+const colors = ['#C8972A','#F0D080','#EAD9BF','#ffffff','#B84A1E'];
+class Spark {
+  constructor(x,y){
+    this.x=x; this.y=y;
+    this.size=Math.random()*3.5+1;
+    this.color=colors[Math.floor(Math.random()*colors.length)];
+    this.vx=(Math.random()-0.5)*2.5;
+    this.vy=(Math.random()-0.5)*2.5-1.2;
+    this.life=1; this.decay=Math.random()*0.022+0.012;
+    this.star=Math.random()>0.5;
+  }
+  draw(){
+    ctx.save(); ctx.globalAlpha=this.life; ctx.fillStyle=this.color;
+    if(this.star){
+      ctx.translate(this.x,this.y); ctx.beginPath();
+      for(let i=0;i<4;i++){ctx.rotate(Math.PI/2);ctx.lineTo(0,-this.size*2.2);ctx.lineTo(this.size*0.4,-this.size*0.4);}
+      ctx.closePath(); ctx.fill();
+    } else {
+      ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fill();
+    }
+    ctx.restore();
+  }
+  update(){ this.x+=this.vx; this.y+=this.vy; this.vy+=0.04; this.life-=this.decay; }
+}
+if (window.matchMedia('(pointer:fine)').matches) {
+  document.addEventListener('mousemove', e=>{
+    if(Math.random()>0.35) return;
+    for(let i=0;i<3;i++) sparks.push(new Spark(e.clientX,e.clientY));
+  });
+}
+(function loop(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  for(let i=sparks.length-1;i>=0;i--){
+    sparks[i].update(); sparks[i].draw();
+    if(sparks[i].life<=0) sparks.splice(i,1);
+  }
+  requestAnimationFrame(loop);
+})();
+
+// ---- Scroll reveal ----
+document.body.classList.add('js-ready');
+const els = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+},{threshold:0.08, rootMargin:'0px 0px -40px 0px'});
+els.forEach(el=>io.observe(el));
+
+// ---- Testi scroll ----
+const ts = document.getElementById('ts');
+document.getElementById('tLeft').onclick = ()=>ts.scrollBy({left:-360,behavior:'smooth'});
+document.getElementById('tRight').onclick = ()=>ts.scrollBy({left:360,behavior:'smooth'});
+
+// ---- Booking form -> WhatsApp ----
+function handleSubmit(button){
+  const form = button.closest('.booking-form');
+  const inputs = form.querySelectorAll('input, select, textarea');
+  const [firstName, lastName, phone, preferredDate, preferredTime, area, jewelry] = inputs;
+  const parts = [
+    "Hi Sparkle! I'd like to book a jewelry cleaning visit.",
+    `Name: ${[firstName.value, lastName.value].filter(Boolean).join(' ') || 'Not provided'}`,
+    `WhatsApp: ${phone.value || 'Not provided'}`,
+    `Preferred date: ${preferredDate.value || 'Flexible'}`,
+    `Preferred time: ${preferredTime.value || 'Flexible'}`,
+    `Area: ${area.value || 'Not provided'}`,
+    `Jewelry: ${jewelry.value || 'Not specified'}`
+  ];
+  const url = `https://wa.me/201119691116?text=${encodeURIComponent(parts.join('\n'))}`;
+  window.open(url, '_blank', 'noopener');
+}
+</script>
+</body>
+</html>
