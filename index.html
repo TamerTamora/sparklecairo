@@ -1355,6 +1355,19 @@ document.addEventListener('mousemove', e=>{
   if(Math.random()>0.35) return;
   for(let i=0;i<3;i++) sparks.push(new Spark(e.clientX,e.clientY));
 });
+ 
+// Touch support for mobile sparkles while scrolling
+document.addEventListener('touchmove', e=>{
+  if(Math.random()>0.5) return;
+  const touch = e.touches[0];
+  for(let i=0;i<2;i++) sparks.push(new Spark(touch.clientX, touch.clientY));
+}, {passive: true});
+ 
+// Tap sparkles on mobile
+document.addEventListener('touchstart', e=>{
+  const touch = e.touches[0];
+  for(let i=0;i<5;i++) sparks.push(new Spark(touch.clientX, touch.clientY));
+}, {passive: true});
 (function loop(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   for(let i=sparks.length-1;i>=0;i--){
