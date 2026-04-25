@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,300;1,600;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
 :root {
   --ink:    #1C1108;
   --gold:   #C8972A;
@@ -18,23 +18,19 @@
   --cream:  #FBF7F1;
   --muted:  #5A4A35;
   --white:  #FFFFFF;
-  --header-h: 84px;
 }
-
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+ 
+html { scroll-behavior: smooth; }
 body {
   font-family: 'Outfit', sans-serif;
   background: var(--cream);
   color: var(--ink);
   overflow-x: hidden;
-  line-height: 1.5;
 }
-section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
-a, button, input, select, textarea { touch-action: manipulation; }
-
+ 
 /* ===== SPARKLE CANVAS ===== */
 #fx { position: fixed; inset: 0; pointer-events: none; z-index: 900; }
-
+ 
 /* ===== NAV ===== */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
@@ -59,13 +55,14 @@ nav {
 }
 .nav-links a:hover { color: var(--gold); }
 .nav-book {
-  background: var(--gold); color: var(--white) !important;
+  background: #25D366; color: var(--white) !important;
   padding: 10px 22px; border-radius: 100px; font-weight: 600 !important;
   font-size: 0.82rem !important; transition: background 0.25s, transform 0.25s !important;
-  box-shadow: 0 4px 16px rgba(200,151,42,0.35);
+  box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+  display: inline-flex; align-items: center; gap: 6px;
 }
-.nav-book:hover { background: #A67820 !important; transform: translateY(-2px); }
-
+.nav-book:hover { background: #1DA851 !important; transform: translateY(-2px); }
+ 
 /* ===== HERO ===== */
 .hero {
   min-height: 100vh;
@@ -75,7 +72,7 @@ nav {
   gap: 60px;
   position: relative; overflow: hidden;
 }
-
+ 
 /* diagonal bg split */
 .hero::before {
   content: '';
@@ -85,10 +82,10 @@ nav {
   clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
   z-index: 0;
 }
-
+ 
 .hero-left { position: relative; z-index: 2; }
 .hero-right { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-
+ 
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
@@ -99,7 +96,7 @@ nav {
 }
 .hero-eyebrow span { animation: blink 2s ease infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
+ 
 .hero-h1 {
   font-family: 'Fraunces', serif;
   font-size: clamp(3rem, 5.5vw, 5.5rem);
@@ -112,27 +109,19 @@ nav {
   font-style: italic; font-weight: 300;
   color: var(--gold);
 }
-
+ 
 .hero-sub {
   font-size: 1rem; font-weight: 400; line-height: 1.8;
   color: var(--muted); max-width: 440px;
   animation: fadeUp 0.7s ease 0.4s both;
   margin-bottom: 44px;
 }
-
+ 
 .hero-actions {
   display: flex; gap: 14px; flex-wrap: wrap;
   animation: fadeUp 0.7s ease 0.55s both;
 }
-.btn-gold {
-  display: inline-flex; align-items: center; gap: 9px;
-  background: var(--gold); color: white;
-  padding: 15px 32px; border-radius: 100px;
-  font-size: 0.9rem; font-weight: 600; text-decoration: none;
-  box-shadow: 0 6px 24px rgba(200,151,42,0.4);
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-}
-.btn-gold:hover { transform: translateY(-3px); background: #A67820; box-shadow: 0 12px 32px rgba(200,151,42,0.45); }
+ 
 .btn-wa {
   display: inline-flex; align-items: center; gap: 9px;
   background: #25D366; color: white;
@@ -142,7 +131,16 @@ nav {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .btn-wa:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(37,211,102,0.4); }
-
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: transparent; color: var(--ink);
+  padding: 15px 32px; border-radius: 100px;
+  font-size: 0.9rem; font-weight: 600; text-decoration: none;
+  border: 2px solid rgba(28,17,8,0.2);
+  transition: all 0.3s;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+ 
 /* hero right — visual */
 .hero-visual {
   display: flex; flex-direction: column; align-items: center; gap: 24px;
@@ -173,7 +171,7 @@ nav {
   animation: gemFloat 4s ease-in-out infinite;
 }
 @keyframes gemFloat { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-12px); } }
-
+ 
 .bubbles {
   position: absolute; inset: 0; pointer-events: none;
 }
@@ -187,7 +185,7 @@ nav {
   0%,100%{ transform: translateY(0) scale(1); opacity: 0.7; }
   50%{ transform: translateY(-18px) scale(1.1); opacity: 1; }
 }
-
+ 
 .hero-proof {
   display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
 }
@@ -201,7 +199,7 @@ nav {
   font-size: 1.6rem; font-weight: 700; color: var(--gold); line-height: 1;
 }
 .proof-label { font-size: 0.72rem; font-weight: 500; color: var(--muted); margin-top: 4px; }
-
+ 
 /* ===== WHAT IS ULTRASONIC ===== */
 .explainer {
   padding: 110px 60px;
@@ -247,7 +245,7 @@ nav {
   color: rgba(255,255,255,0.85);
   font-weight: 400; position: relative; z-index: 1;
 }
-
+ 
 .explainer-right {}
 .section-eyebrow {
   font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
@@ -266,7 +264,7 @@ nav {
   font-size: 0.92rem; line-height: 1.85;
   color: var(--muted); font-weight: 400; margin-bottom: 40px;
 }
-
+ 
 .results-list { display: flex; flex-direction: column; gap: 14px; }
 .result-item {
   display: flex; align-items: flex-start; gap: 14px;
@@ -279,7 +277,7 @@ nav {
 .result-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
 .result-text { font-size: 0.86rem; font-weight: 500; color: var(--ink); line-height: 1.5; }
 .result-text span { display: block; font-size: 0.78rem; font-weight: 400; color: var(--muted); margin-top: 3px; }
-
+ 
 /* ===== HOW IT WORKS ===== */
 .how {
   background: var(--warm);
@@ -326,7 +324,7 @@ nav {
   font-size: 1.1rem; font-weight: 600; color: var(--ink); margin-bottom: 10px;
 }
 .step-desc { font-size: 0.82rem; font-weight: 400; color: var(--muted); line-height: 1.7; }
-
+ 
 /* time badge */
 .time-badge {
   display: flex; align-items: center; justify-content: center;
@@ -340,7 +338,7 @@ nav {
   box-shadow: 0 8px 24px rgba(28,17,8,0.2);
 }
 .time-pill .t { color: var(--gold-l); }
-
+ 
 /* ===== WHAT GETS CLEAN ===== */
 .whatclean {
   padding: 110px 60px;
@@ -374,7 +372,7 @@ nav {
   margin-top: 16px; font-size: 0.75rem; font-weight: 600;
   color: var(--gold); letter-spacing: 0.05em;
 }
-
+ 
 /* ===== AREAS ===== */
 .areas {
   background: var(--ink); padding: 100px 60px;
@@ -392,7 +390,7 @@ nav {
 .areas-header .section-h { color: white; }
 .areas-header .section-h em { color: var(--gold-l); }
 .areas-header .section-p { color: rgba(255,255,255,0.75); }
-
+ 
 .area-chips { display: flex; flex-wrap: wrap; gap: 12px; }
 .area-chip {
   display: flex; align-items: center; gap: 8px;
@@ -407,7 +405,7 @@ nav {
   border-style: dashed; color: rgba(255,255,255,0.45);
   font-style: italic; font-size: 0.8rem;
 }
-
+ 
 /* ===== TESTIMONIALS ===== */
 .testi { padding: 110px 60px; }
 .testi-header { margin-bottom: 52px; }
@@ -454,7 +452,7 @@ nav {
   transition: all 0.25s;
 }
 .tnav-btn:hover { background: var(--gold); color: white; border-color: var(--gold); }
-
+ 
 /* ===== BOOKING ===== */
 .booking {
   background: linear-gradient(160deg, var(--warm) 0%, #EDD9A3 100%);
@@ -468,7 +466,7 @@ nav {
 .booking-left {}
 .booking-left .section-h { margin-bottom: 16px; }
 .booking-left .section-p { margin-bottom: 32px; }
-
+ 
 .wa-block {
   background: #25D366; border-radius: 20px; padding: 28px 28px;
   display: flex; gap: 18px; align-items: center;
@@ -482,71 +480,46 @@ nav {
 .wa-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 4px; }
 .wa-number { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 700; color: white; }
 .wa-sub { font-size: 0.78rem; color: rgba(255,255,255,0.8); margin-top: 3px; }
-
-.or-divider {
-  display: flex; align-items: center; gap: 14px;
-  font-size: 0.75rem; font-weight: 600; color: var(--muted);
-  letter-spacing: 0.08em; text-transform: uppercase;
-  margin-bottom: 20px;
-}
-.or-divider::before, .or-divider::after {
-  content: ''; flex: 1; height: 1px;
-  background: rgba(90,74,53,0.25);
-}
-
+ 
+ 
 .info-chips { display: flex; flex-direction: column; gap: 12px; }
 .info-chip {
   display: flex; align-items: center; gap: 12px;
   font-size: 0.83rem; font-weight: 400; color: var(--muted);
 }
 .info-chip span { font-size: 1.1rem; }
-
-/* form */
-.booking-form {
-  background: white; border-radius: 28px; padding: 40px;
+ 
+ 
+.booking-right { display: flex; align-items: center; justify-content: center; }
+.wa-cta-box {
+  background: white; border-radius: 28px; padding: 44px 40px;
   box-shadow: 0 16px 60px rgba(28,17,8,0.1);
+  text-align: center;
 }
-.form-title {
-  font-family: 'Fraunces', serif;
-  font-size: 1.3rem; font-weight: 700; color: var(--ink);
-  margin-bottom: 28px;
+.wa-cta-icon { font-size: 3rem; margin-bottom: 20px; }
+.wa-cta-title {
+  font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 700;
+  color: var(--ink); margin-bottom: 14px; line-height: 1.2;
 }
-.f-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
-.f-label { font-size: 0.74rem; font-weight: 600; color: var(--ink); letter-spacing: 0.03em; }
-.f-input, .f-select, .f-textarea {
-  padding: 13px 16px;
-  border: 2px solid rgba(28,17,8,0.1);
-  border-radius: 12px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.88rem; font-weight: 400; color: var(--ink);
-  outline: none; transition: border-color 0.25s, box-shadow 0.25s;
-  background: #FDFAF5;
+.wa-cta-body {
+  font-size: 0.9rem; color: var(--muted); line-height: 1.75; margin-bottom: 28px;
 }
-.f-input::placeholder { color: #A09080; }
-.f-input:focus, .f-select:focus, .f-textarea:focus {
-  border-color: var(--gold);
-  box-shadow: 0 0 0 4px rgba(200,151,42,0.12);
-  background: white;
+.wa-cta-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: #25D366; color: white; text-decoration: none;
+  padding: 16px 32px; border-radius: 100px;
+  font-size: 1rem; font-weight: 700;
+  box-shadow: 0 6px 24px rgba(37,211,102,0.35);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  margin-bottom: 20px;
 }
-.f-textarea { resize: vertical; min-height: 90px; }
-.f-select {
-  appearance: none; cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1L6 7L11 1' stroke='%235A4A35' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 14px center;
-  padding-right: 38px; background-color: #FDFAF5;
+.wa-cta-btn:hover { transform: translateY(-3px); background: #1DA851; box-shadow: 0 10px 32px rgba(37,211,102,0.45); }
+.wa-cta-chips {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; flex-wrap: wrap;
+  font-size: 0.75rem; color: var(--muted); font-weight: 600;
 }
-.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.f-submit {
-  width: 100%; padding: 16px;
-  background: var(--gold); color: white; border: none;
-  border-radius: 14px; font-family: 'Outfit', sans-serif;
-  font-size: 0.95rem; font-weight: 600; cursor: pointer;
-  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
-  box-shadow: 0 6px 20px rgba(200,151,42,0.35);
-  margin-top: 6px;
-}
-.f-submit:hover { background: #A67820; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(200,151,42,0.45); }
-
+ 
 /* ===== FOOTER ===== */
 footer {
   background: var(--ink); color: white; padding: 60px 60px 36px;
@@ -583,30 +556,23 @@ footer {
   text-decoration: none; transition: all 0.25s;
 }
 .soc-btn:hover { background: var(--gold); color: white; }
-
+ 
 /* sticky WhatsApp */
 .wa-float {
-  position: fixed; bottom: 28px; right: 28px; z-index: 300;
+  position: fixed; bottom: 20px; right: 20px; z-index: 300;
   background: #25D366; color: white;
-  width: 58px; height: 58px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.6rem; text-decoration: none;
-  box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 22px; border-radius: 100px;
+  font-size: 0.9rem; font-weight: 700; text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.5);
   animation: waPop 0.5s cubic-bezier(0.34,1.56,0.64,1) 1.5s both;
-  transition: transform 0.3s;
+  transition: transform 0.25s, box-shadow 0.25s;
 }
-.wa-float:hover { transform: scale(1.12); }
-@keyframes waPop { from{ transform: scale(0); } to{ transform: scale(1); } }
-.wa-float-label {
-  position: absolute; right: 70px;
-  background: var(--ink); color: white;
-  font-size: 0.75rem; font-weight: 600;
-  padding: 7px 14px; border-radius: 100px;
-  white-space: nowrap; opacity: 0;
-  transition: opacity 0.25s; pointer-events: none;
-}
-.wa-float:hover .wa-float-label { opacity: 1; }
-
+.wa-float:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.6); }
+@keyframes waPop { from{ transform: scale(0) translateY(20px); opacity:0; } to{ transform: scale(1) translateY(0); opacity:1; } }
+.wa-float-label { display: none; }
+ 
 /* ===== PRICING ===== */
 .pricing {
   background: var(--ink);
@@ -625,7 +591,7 @@ footer {
 .pricing-header .section-h { color: white; }
 .pricing-header .section-h em { color: var(--gold-l); }
 .pricing-header .section-p { color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto; }
-
+ 
 .pricing-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -633,7 +599,7 @@ footer {
   position: relative; z-index: 1;
   max-width: 1000px; margin: 0 auto;
 }
-
+ 
 .price-card {
   background: rgba(255,255,255,0.05);
   border: 1.5px solid rgba(200,151,42,0.2);
@@ -654,7 +620,7 @@ footer {
   box-shadow: 0 24px 60px rgba(200,151,42,0.35);
 }
 .price-card.featured:hover { transform: scale(1.04) translateY(-6px); }
-
+ 
 .price-badge {
   display: inline-block;
   background: var(--ink); color: var(--gold);
@@ -663,20 +629,20 @@ footer {
   margin-bottom: 24px; align-self: flex-start;
 }
 .price-card.featured .price-badge { background: rgba(28,17,8,0.25); color: white; }
-
+ 
 .price-name {
   font-family: 'Fraunces', serif;
   font-size: 1.3rem; font-weight: 700;
   color: white; margin-bottom: 8px;
 }
 .price-card.featured .price-name { color: var(--ink); }
-
+ 
 .price-tagline {
   font-size: 0.8rem; color: rgba(255,255,255,0.8);
   font-weight: 400; line-height: 1.5; margin-bottom: 32px;
 }
 .price-card.featured .price-tagline { color: rgba(28,17,8,0.75); }
-
+ 
 .price-amount {
   display: flex; align-items: flex-end; gap: 6px;
   margin-bottom: 6px;
@@ -692,20 +658,20 @@ footer {
   margin-bottom: 8px;
 }
 .price-card.featured .price-currency { color: rgba(28,17,8,0.65); }
-
+ 
 .price-saving {
   font-size: 0.75rem; font-weight: 600;
   color: #7EDD9A; margin-bottom: 28px;
 }
 .price-card.featured .price-saving { color: rgba(28,17,8,0.7); }
 .price-no-saving { margin-bottom: 28px; height: 18px; } /* spacer */
-
+ 
 .price-divider {
   height: 1px; background: rgba(255,255,255,0.1);
   margin-bottom: 24px;
 }
 .price-card.featured .price-divider { background: rgba(28,17,8,0.15); }
-
+ 
 .price-features { list-style: none; display: flex; flex-direction: column; gap: 12px; flex: 1; }
 .price-features li {
   display: flex; align-items: center; gap: 10px;
@@ -723,22 +689,20 @@ footer {
 .price-card.featured .price-features li::before {
   background: rgba(28,17,8,0.15); color: var(--ink);
 }
-
+ 
 .price-cta {
   margin-top: 32px;
-  display: block; text-align: center;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
   padding: 14px; border-radius: 14px;
   font-size: 0.88rem; font-weight: 600;
   text-decoration: none; transition: all 0.25s;
-  background: rgba(200,151,42,0.15); color: var(--gold-l);
-  border: 1.5px solid rgba(200,151,42,0.3);
+  background: #25D366; color: white;
+  box-shadow: 0 4px 14px rgba(37,211,102,0.3);
 }
-.price-cta:hover { background: var(--gold); color: white; border-color: var(--gold); }
-.price-card.featured .price-cta {
-  background: var(--ink); color: white; border-color: var(--ink);
-}
-.price-card.featured .price-cta:hover { background: #3A2A18; }
-
+.price-cta:hover { background: #1DA851; transform: translateY(-2px); }
+.price-card.featured .price-cta { background: var(--ink); color: white; box-shadow: 0 4px 14px rgba(28,17,8,0.25); }
+.price-card.featured .price-cta:hover { background: #2E1C08; }
+ 
 /* per-piece note */
 .pricing-note {
   text-align: center; margin-top: 40px;
@@ -746,116 +710,190 @@ footer {
   position: relative; z-index: 1;
 }
 .pricing-note strong { color: rgba(255,255,255,0.9); }
-
+ 
 /* ANIMATIONS */
 @keyframes fadeUp { from{ opacity:0; transform:translateY(28px); } to{ opacity:1; transform:translateY(0); } }
 .reveal { opacity:1; transform:none; transition: opacity 0.7s ease, transform 0.7s ease; }
 .js-ready .reveal { opacity:0; transform:translateY(28px); }
 .js-ready .reveal.in { opacity:1; transform:none; }
 .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
-
+ 
+/* ── TABLET 900px ── */
 @media (max-width: 900px) {
-  :root { --header-h: 76px; }
-  nav { padding: 16px 20px; }
-  .logo { font-size: 1.3rem; }
+  nav { padding: 14px 20px; }
   .nav-links { display: none; }
-  .hero { min-height: auto; grid-template-columns: 1fr; padding: calc(var(--header-h) + 28px) 20px 60px; gap: 36px; }
-  .hero::before { width: 100%; clip-path: none; top: auto; bottom: 0; height: 40%; opacity: 0.5; }
+  .nav-wa-mobile {
+    display: inline-flex !important; align-items: center; gap: 6px;
+    background: #25D366; color: white; text-decoration: none;
+    padding: 9px 18px; border-radius: 100px;
+    font-size: 0.82rem; font-weight: 700;
+  }
+ 
+  .hero { grid-template-columns: 1fr; padding: 90px 20px 56px; gap: 36px; text-align: center; min-height: auto; }
+  .hero::before { width: 100%; clip-path: none; top: auto; bottom: 0; height: 30%; opacity: 0.4; }
+  .hero-left { display: flex; flex-direction: column; align-items: center; }
   .hero-right { order: -1; }
-  .hero-sub { max-width: none; }
-  .hero-actions { width: 100%; }
-  .btn-gold, .btn-wa { flex: 1 1 220px; justify-content: center; }
-  .hero-proof { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .proof-chip { padding: 14px 14px; }
-  .ring-anim { width: 180px; height: 180px; }
-  .ring-center { inset: 48px; font-size: 2.75rem; }
-  .explainer { grid-template-columns: 1fr; padding: 80px 20px; gap: 48px; }
-  .explainer-visual { padding: 40px 32px; }
-  .how { padding: 80px 20px; }
-  .steps { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .hero-sub { max-width: 100%; }
+  .hero-actions { justify-content: center; }
+  .ring-anim { width: 200px; height: 200px; }
+  .hero-proof { justify-content: center; }
+ 
+  .explainer { grid-template-columns: 1fr; padding: 72px 20px; gap: 40px; }
+  .how { padding: 72px 20px; }
+  .steps { grid-template-columns: 1fr 1fr; gap: 36px; }
   .steps::before { display: none; }
-  .step { padding: 0 8px; }
-  .time-pill { flex-wrap: wrap; text-align: center; line-height: 1.5; }
-  .whatclean { padding: 80px 20px; }
-  .whatclean-grid { grid-template-columns: 1fr 1fr; }
-  .clean-card { padding: 30px 24px; }
-  .pricing { padding: 80px 20px; }
+  .whatclean { padding: 72px 20px; }
+  .whatclean-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .pricing { padding: 72px 20px; }
   .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
-  .price-card { padding: 36px 28px; }
-  .price-card.featured { transform: scale(1); }
+  .price-card.featured { transform: none; }
   .price-card.featured:hover { transform: translateY(-6px); }
-  .areas { padding: 80px 20px; }
-  .testi { padding: 80px 20px; }
-  .tcard { min-width: min(82vw, 340px); padding: 30px; }
-  .booking { padding: 80px 20px; }
-  .booking-inner { grid-template-columns: 1fr; gap: 36px; }
-  .wa-block { padding: 24px; }
-  .booking-form { padding: 32px 24px; }
-  .wa-float { right: 20px; bottom: calc(20px + env(safe-area-inset-bottom)); }
+  .areas { padding: 72px 20px; }
+  .testi { padding: 72px 20px; }
+  .booking { padding: 72px 20px; }
+  .booking-inner { grid-template-columns: 1fr; }
+  .booking-right { display: none; }
   footer { padding: 48px 20px 28px; }
-  .footer-top { flex-direction: column; }
+  .footer-top { flex-direction: column; gap: 28px; }
+  .wa-float { bottom: 16px; right: 16px; padding: 12px 18px; font-size: 0.84rem; }
 }
+ 
+/* ── MOBILE 580px ── */
 @media (max-width: 580px) {
-  :root { --header-h: 72px; }
-  nav { padding: 14px 16px; }
-  .logo { font-size: 1.15rem; gap: 8px; }
-  .hero { padding: calc(var(--header-h) + 18px) 16px 42px; gap: 28px; }
-  .hero::before { height: 36%; }
-  .hero-h1 { font-size: clamp(2.45rem, 13vw, 3.35rem); margin-bottom: 18px; }
-  .hero-sub { font-size: 0.95rem; line-height: 1.7; margin-bottom: 28px; }
-  .hero-actions { flex-direction: column; }
-  .btn-gold, .btn-wa { width: 100%; padding: 15px 22px; }
-  .hero-proof { grid-template-columns: 1fr; }
-  .ring-anim { width: 156px; height: 156px; }
-  .ring-center { inset: 40px; font-size: 2.4rem; }
-  .explainer, .how, .whatclean, .pricing, .areas, .testi, .booking { padding-left: 16px; padding-right: 16px; }
-  .explainer-visual { border-radius: 24px; padding: 32px 22px; }
-  .explainer-visual h3 { font-size: 1.6rem; }
-  .section-h { margin-bottom: 16px; }
-  .section-p { font-size: 0.9rem; margin-bottom: 28px; }
-  .result-item { padding: 16px; }
-  .whatclean-grid { grid-template-columns: 1fr; }
+  nav { padding: 12px 16px; }
+ 
+  .hero { padding: 76px 16px 48px; gap: 28px; }
+  .hero-h1 { font-size: clamp(2.2rem, 8.5vw, 3.2rem); }
+  .hero-sub { font-size: 0.95rem; }
+  .hero-actions { flex-direction: column; width: 100%; gap: 10px; }
+  .btn-wa, .btn-outline { width: 100%; justify-content: center; padding: 15px; }
+  .ring-anim { width: 160px; height: 160px; }
+  .ring-center { font-size: 2.8rem; }
+  .hero-proof { gap: 10px; }
+  .proof-chip { padding: 10px 14px; flex: 1; min-width: 0; }
+  .proof-num { font-size: 1.3rem; }
+  .proof-label { font-size: 0.65rem; }
+ 
+  .section-h { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+ 
+  .explainer { padding: 56px 16px; gap: 32px; }
+  .explainer-visual { padding: 36px 28px; border-radius: 24px; }
+  .explainer-visual h3 { font-size: 1.5rem; }
+ 
+  .how { padding: 56px 16px; }
   .steps { grid-template-columns: 1fr; }
-  .step-num { width: 64px; height: 64px; margin-bottom: 18px; }
-  .time-badge { margin-top: 40px; }
-  .time-pill { width: 100%; padding: 16px 18px; border-radius: 24px; }
-  .area-chip { width: 100%; justify-content: center; }
-  .tcard { min-width: 86vw; padding: 28px 22px; border-radius: 20px; }
-  .testi-nav { justify-content: center; }
-  .wa-block { flex-direction: column; align-items: flex-start; }
+  .step { padding-bottom: 32px; }
+  .step-num { width: 58px; height: 58px; font-size: 1.3rem; margin-bottom: 16px; }
+  .time-pill { font-size: 0.8rem; padding: 12px 20px; flex-wrap: wrap; gap: 6px; justify-content: center; }
+ 
+  .whatclean { padding: 56px 16px; }
+  .whatclean-grid { grid-template-columns: 1fr; gap: 12px; }
+  .clean-card { padding: 28px 24px; border-radius: 20px; }
+ 
+  .pricing { padding: 56px 16px; }
+  .pricing-grid { max-width: 100%; }
+  .price-card { padding: 32px 24px; border-radius: 24px; }
+  .price-num { font-size: 2.8rem; }
+  .price-cta { font-size: 0.95rem; padding: 15px; }
+ 
+  .areas { padding: 56px 16px; }
+  .area-chip { padding: 10px 18px; font-size: 0.82rem; }
+ 
+  .testi { padding: 56px 16px; }
+  .tcard { min-width: 280px; padding: 28px 24px; }
+  .tcard-text { font-size: 0.92rem; }
+ 
+  .booking { padding: 56px 16px; }
+  .wa-block { padding: 22px 20px; gap: 14px; border-radius: 16px; }
   .wa-number { font-size: 1.05rem; }
-  .booking-form { padding: 28px 18px; border-radius: 22px; }
-  .f-row { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; }
-  .wa-float { width: 54px; height: 54px; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); }
-  .wa-float-label { display: none; }
+ 
+  footer { padding: 40px 16px 80px; }
+  .footer-top { flex-direction: column; gap: 24px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
+ 
+  .wa-float { bottom: 14px; right: 14px; padding: 12px 16px; font-size: 0.82rem; }
 }
+ 
+/* ── VERY SMALL 380px ── */
+@media (max-width: 380px) {
+  .hero-h1 { font-size: 2rem; }
+  .hero-proof { flex-wrap: wrap; }
+  .proof-chip { min-width: calc(50% - 5px); }
+  .tcard { min-width: 260px; }
+  .wa-float { padding: 11px 14px; font-size: 0.78rem; }
+}
+ 
+/* ===== MOBILE FIXES ===== */
+@media (max-width: 600px) {
+ 
+  /* Fix 1: Hero buttons — normal size, not giant blobs */
+  .hero-actions {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  .btn-wa, .btn-outline, .btn-gold {
+    width: 100%;
+    padding: 13px 20px;
+    font-size: 0.88rem;
+    border-radius: 14px !important;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+ 
+  /* Fix 2: Area chips — wrap side by side */
+  .area-chips {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+  .area-chip {
+    width: auto !important;
+    flex: 0 0 auto !important;
+    padding: 8px 14px !important;
+    font-size: 0.78rem !important;
+    border-radius: 100px;
+  }
+ 
+  /* Fix 3: WhatsApp green card — compact size */
+  .wa-block {
+    padding: 16px 18px !important;
+    border-radius: 14px !important;
+    gap: 12px !important;
+  }
+  .wa-icon { font-size: 1.4rem !important; }
+  .wa-number { font-size: 0.95rem !important; }
+  .wa-label { font-size: 0.6rem !important; }
+  .wa-sub { font-size: 0.7rem !important; }
+}
+ 
 </style>
 </head>
 <body>
-
+ 
 <canvas id="fx"></canvas>
-
+ 
 <!-- Sticky WhatsApp -->
-<a href="https://wa.me/201119691116?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20a%20jewelry%20cleaning%20visit." class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with Sparkle on WhatsApp">
-  <span>💬</span>
-  <span class="wa-float-label">Chat on WhatsApp</span>
+<a href="https://wa.me/201000000000?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20a%20jewelry%20cleaning%20visit." class="wa-float" target="_blank">
+  💬 Book on WhatsApp
 </a>
-
+ 
 <!-- NAV -->
 <nav>
   <a href="#" class="logo">
     <span class="logo-star">✦</span> Sparkle
   </a>
+  <a href="https://wa.me/201000000000?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20a%20jewelry%20cleaning%20visit." class="nav-wa-mobile" target="_blank" style="display:none;">💬 Book</a>
   <ul class="nav-links">
     <li><a href="#how">How It Works</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#areas">Cairo Areas</a></li>
     <li><a href="#reviews">Reviews</a></li>
-    <li><a href="#booking" class="nav-book">Book Now</a></li>
+    <li><a href="https://wa.me/201000000000?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20a%20jewelry%20cleaning%20visit." class="nav-book" target="_blank">💬 Book on WhatsApp</a></li>
   </ul>
 </nav>
-
+ 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
@@ -871,11 +909,11 @@ footer {
       Egypt's first mobile ultrasonic jewelry cleaning service. Our specialist drives to you anywhere in Cairo — you watch, we clean, you're amazed.
     </p>
     <div class="hero-actions">
-      <a href="#booking" class="btn-gold">✦ Book a Visit</a>
-      <a href="https://wa.me/201119691116?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20a%20jewelry%20cleaning%20visit." class="btn-wa" target="_blank" rel="noopener noreferrer">💬 WhatsApp Us</a>
+      <a href="https://wa.me/201000000000?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20a%20jewelry%20cleaning%20visit." class="btn-wa" target="_blank">💬 Book on WhatsApp</a>
+      <a href="#pricing" class="btn-outline">See Pricing ↓</a>
     </div>
   </div>
-
+ 
   <div class="hero-right">
     <div class="hero-visual">
       <div class="ring-anim">
@@ -907,7 +945,7 @@ footer {
     </div>
   </div>
 </section>
-
+ 
 <!-- WHAT IS ULTRASONIC -->
 <section class="explainer" id="about">
   <div class="explainer-visual reveal">
@@ -957,7 +995,7 @@ footer {
     </div>
   </div>
 </section>
-
+ 
 <!-- HOW IT WORKS -->
 <section class="how" id="how">
   <div class="how-header reveal">
@@ -968,8 +1006,8 @@ footer {
     <div class="step reveal">
       <div class="step-num">1</div>
       <div class="step-icon">📱</div>
-      <div class="step-title">Book Online or WhatsApp</div>
-      <div class="step-desc">Choose your date, time, and Cairo area. Takes 2 minutes. We confirm within the hour.</div>
+      <div class="step-title">WhatsApp Us</div>
+      <div class="step-desc">Send us your area and preferred time on WhatsApp. We confirm within minutes.</div>
     </div>
     <div class="step reveal d1">
       <div class="step-num">2</div>
@@ -994,7 +1032,7 @@ footer {
     <div class="time-pill">⏱ Average visit: <span class="t">&nbsp;30 – 45 minutes</span> &nbsp;·&nbsp; 7 days a week, 9am – 8pm</div>
   </div>
 </section>
-
+ 
 <!-- WHAT WE CLEAN -->
 <section class="whatclean">
   <p class="section-eyebrow reveal">What We Clean</p>
@@ -1038,7 +1076,7 @@ footer {
     </div>
   </div>
 </section>
-
+ 
 <!-- PRICING -->
 <section class="pricing" id="pricing">
   <div class="pricing-header reveal">
@@ -1046,9 +1084,9 @@ footer {
     <h2 class="section-h">Simple, honest <em>pricing.</em></h2>
     <p class="section-p">Pay per piece, or save more with a bundle. The more you bring, the better the deal — and we're already at your door anyway.</p>
   </div>
-
+ 
   <div class="pricing-grid">
-
+ 
     <!-- Per piece -->
     <div class="price-card reveal">
       <span class="price-badge">Per Piece</span>
@@ -1067,9 +1105,9 @@ footer {
         <li>Done in ~10 minutes</li>
         <li>Pay cash or card</li>
       </ul>
-      <a href="#booking" class="price-cta">Book Now</a>
+      <a href="https://wa.me/201000000000?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20a%20Single%20Clean%20(250%20EGP)." class="price-cta" target="_blank">💬 Book on WhatsApp</a>
     </div>
-
+ 
     <!-- Bundle 3 — featured -->
     <div class="price-card featured reveal d1">
       <span class="price-badge">★ Most Popular</span>
@@ -1089,9 +1127,9 @@ footer {
         <li>Pay cash or card</li>
         <li>150 EGP saved</li>
       </ul>
-      <a href="#booking" class="price-cta">Book This Bundle</a>
+      <a href="https://wa.me/201000000000?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20the%203-Piece%20Bundle%20(600%20EGP)." class="price-cta" target="_blank">💬 Book on WhatsApp</a>
     </div>
-
+ 
     <!-- Bundle 5 -->
     <div class="price-card reveal d2">
       <span class="price-badge">Best Value</span>
@@ -1111,22 +1149,22 @@ footer {
         <li>Pay cash or card</li>
         <li>350 EGP saved</li>
       </ul>
-      <a href="#booking" class="price-cta">Book This Bundle</a>
+      <a href="https://wa.me/201000000000?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20the%205-Piece%20Bundle%20(900%20EGP)." class="price-cta" target="_blank">💬 Book on WhatsApp</a>
     </div>
-
+ 
   </div>
-
+ 
   <p class="pricing-note reveal">
-    Have more than 5 pieces? <strong>WhatsApp us</strong> — we'll work out a custom price for your full collection.
+    Have more than 5 pieces? <a href="https://wa.me/201000000000?text=Hi%20Sparkle!%20I%27d%20like%20a%20custom%20quote%20for%20more%20than%205%20pieces." target="_blank" style="color:var(--gold-l);font-weight:600;">💬 WhatsApp us for a custom price</a>
   </p>
 </section>
-
+ 
 <!-- AREAS -->
 <section class="areas" id="areas">
   <div class="areas-header reveal">
     <p class="section-eyebrow">Where We Go</p>
     <h2 class="section-h">We cover <em>all of Cairo.</em></h2>
-    <p class="section-p">Starting with Greater Cairo. If your area isn't listed, WhatsApp us — we'll do our best to reach you.</p>
+    <p class="section-p">Starting with Greater Cairo. Not listed? <a href="https://wa.me/201000000000?text=Hi!%20Is%20my%20area%20covered%3F" target="_blank" style="color:var(--gold-l);font-weight:600;">WhatsApp us</a> — we'll do our best.</p>
   </div>
   <div class="area-chips reveal">
     <div class="area-chip">🗺 Zamalek</div>
@@ -1141,10 +1179,10 @@ footer {
     <div class="area-chip">🗺 Shorouk</div>
     <div class="area-chip">🗺 Downtown Cairo</div>
     <div class="area-chip">🗺 Garden City</div>
-    <div class="area-chip more">+ WhatsApp us for other areas</div>
+    <div class="area-chip more"><a href="https://wa.me/201000000000?text=Hi!%20Is%20my%20area%20covered%3F" target="_blank" style="color:inherit;text-decoration:none;">+ WhatsApp us for other areas</a></div>
   </div>
 </section>
-
+ 
 <!-- TESTIMONIALS -->
 <section class="testi" id="reviews">
   <div class="testi-header">
@@ -1203,91 +1241,50 @@ footer {
     <button class="tnav-btn" id="tRight">→</button>
   </div>
 </section>
-
-<!-- BOOKING -->
+ 
+<!-- BOOK ON WHATSAPP -->
 <section class="booking" id="booking">
   <div class="booking-inner">
     <div class="booking-left">
       <p class="section-eyebrow reveal">Book Your Visit</p>
-      <h2 class="section-h reveal">Two ways<br>to <em>book.</em></h2>
-      <p class="section-p reveal">WhatsApp is fastest. The form works too — we'll confirm within the hour.</p>
-
-      <a href="https://wa.me/201119691116?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20a%20jewelry%20cleaning%20visit." class="wa-block reveal" target="_blank" rel="noopener noreferrer">
+      <h2 class="section-h reveal">One message.<br>We <em>come to you.</em></h2>
+      <p class="section-p reveal">Send us a WhatsApp message with your area and what you'd like cleaned. We confirm within minutes and come to you.</p>
+      <a href="https://wa.me/201000000000?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20a%20jewelry%20cleaning%20visit." class="wa-block reveal" target="_blank">
         <div class="wa-icon">💬</div>
         <div class="wa-text-wrap">
-          <div class="wa-label">Fastest option</div>
-          <div class="wa-number">+20 111 969 1116</div>
-          <div class="wa-sub">Tap to open WhatsApp — we reply within minutes</div>
+          <div class="wa-label">Tap to open WhatsApp</div>
+          <div class="wa-number">+20 100 000 0000</div>
+          <div class="wa-sub">We reply within minutes — 7 days a week</div>
         </div>
       </a>
-
-      <div class="or-divider reveal">or fill the form</div>
-
       <div class="info-chips reveal">
         <div class="info-chip"><span>📍</span> Greater Cairo only (for now)</div>
         <div class="info-chip"><span>🕘</span> 7 days a week · 9am – 8pm</div>
         <div class="info-chip"><span>💵</span> Pay by cash or card at the visit</div>
-        <div class="info-chip"><span>⏱</span> Same-day booking when available</div>
+        <div class="info-chip"><span>⚡</span> Same-day when available</div>
       </div>
     </div>
-
-    <div class="booking-form reveal d1">
-      <div class="form-title">Request a Visit</div>
-      <div class="f-row">
-        <div class="f-group">
-          <label class="f-label">First Name</label>
-          <input class="f-input" type="text" placeholder="Nadia">
-        </div>
-        <div class="f-group">
-          <label class="f-label">Last Name</label>
-          <input class="f-input" type="text" placeholder="Hassan">
-        </div>
-      </div>
-      <div class="f-group">
-        <label class="f-label">WhatsApp Number</label>
-          <input class="f-input" type="tel" placeholder="+20 111 969 1116">
-      </div>
-      <div class="f-row">
-        <div class="f-group">
-          <label class="f-label">Preferred Date</label>
-          <input class="f-input" type="date">
-        </div>
-        <div class="f-group">
-          <label class="f-label">Preferred Time</label>
-          <select class="f-select">
-            <option>Morning (9am – 12pm)</option>
-            <option>Afternoon (12pm – 4pm)</option>
-            <option>Evening (4pm – 8pm)</option>
-          </select>
+    <div class="booking-right reveal d1">
+      <div class="wa-cta-box">
+        <div class="wa-cta-icon">💍</div>
+        <h3 class="wa-cta-title">Ready for sparkling jewelry?</h3>
+        <p class="wa-cta-body">Tell us your area, preferred time, and what you'd like cleaned. That's it. We handle the rest.</p>
+        <a href="https://wa.me/201000000000?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20a%20jewelry%20cleaning%20visit." class="wa-cta-btn" target="_blank">
+          💬 Book on WhatsApp Now
+        </a>
+        <div class="wa-cta-chips">
+          <span>250 EGP / piece</span>
+          <span>·</span>
+          <span>600 EGP / 3 pieces</span>
+          <span>·</span>
+          <span>900 EGP / 5 pieces</span>
         </div>
       </div>
-      <div class="f-group">
-        <label class="f-label">Your Area in Cairo</label>
-        <select class="f-select">
-          <option value="">Select your area…</option>
-          <option>Zamalek</option>
-          <option>Maadi</option>
-          <option>Heliopolis</option>
-          <option>New Cairo / 5th Settlement</option>
-          <option>Nasr City</option>
-          <option>Mohandessin</option>
-          <option>Dokki</option>
-          <option>Rehab City</option>
-          <option>Shorouk</option>
-          <option>Downtown Cairo</option>
-          <option>Garden City</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="f-group">
-        <label class="f-label">What jewelry? (optional)</label>
-        <textarea class="f-textarea" placeholder="e.g. 2 gold rings, 1 diamond necklace, silver bracelet…"></textarea>
-      </div>
-      <button class="f-submit" onclick="handleSubmit(this)">✦ Send My Request</button>
     </div>
   </div>
 </section>
-
+ 
+ 
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
@@ -1301,14 +1298,12 @@ footer {
         <li><a href="#about">How It Works</a></li>
         <li><a href="#areas">Cairo Areas</a></li>
         <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#booking">Book a Visit</a></li>
       </ul>
     </div>
     <div class="footer-links-group">
-      <div class="footer-links-title">Contact</div>
+      <div class="footer-links-title">Contact Us</div>
       <ul class="footer-links">
-        <li><a href="https://wa.me/201119691116?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20a%20jewelry%20cleaning%20visit." target="_blank" rel="noopener noreferrer">WhatsApp: +20 111 969 1116</a></li>
-        <li><a href="/cdn-cgi/l/email-protection#1c74797070735c6f6c7d6e77707932797b"><span class="__cf_email__" data-cfemail="ff979a939390bf8c8f9e8d94939ad19a98">[email&#160;protected]</span></a></li>
+        <li><a href="https://wa.me/201000000000">WhatsApp: +20 100 000 0000</a></li>
         <li><a href="#">Cairo, Egypt 🇪🇬</a></li>
         <li><a href="#">7 days · 9am – 8pm</a></li>
       </ul>
@@ -1320,18 +1315,17 @@ footer {
       <a href="#" class="soc-btn">ig</a>
       <a href="#" class="soc-btn">fb</a>
       <a href="#" class="soc-btn">tk</a>
-      <a href="#" class="soc-btn">wa</a>
     </div>
   </div>
 </footer>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+ 
+<script>
 // ---- Sparkle canvas ----
 const canvas = document.getElementById('fx');
 const ctx = canvas.getContext('2d');
 function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
 resize(); window.addEventListener('resize', resize);
-
+ 
 const sparks = [];
 const colors = ['#C8972A','#F0D080','#EAD9BF','#ffffff','#B84A1E'];
 class Spark {
@@ -1357,12 +1351,10 @@ class Spark {
   }
   update(){ this.x+=this.vx; this.y+=this.vy; this.vy+=0.04; this.life-=this.decay; }
 }
-if (window.matchMedia('(pointer:fine)').matches) {
-  document.addEventListener('mousemove', e=>{
-    if(Math.random()>0.35) return;
-    for(let i=0;i<3;i++) sparks.push(new Spark(e.clientX,e.clientY));
-  });
-}
+document.addEventListener('mousemove', e=>{
+  if(Math.random()>0.35) return;
+  for(let i=0;i<3;i++) sparks.push(new Spark(e.clientX,e.clientY));
+});
 (function loop(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   for(let i=sparks.length-1;i>=0;i--){
@@ -1371,7 +1363,7 @@ if (window.matchMedia('(pointer:fine)').matches) {
   }
   requestAnimationFrame(loop);
 })();
-
+ 
 // ---- Scroll reveal ----
 document.body.classList.add('js-ready');
 const els = document.querySelectorAll('.reveal');
@@ -1379,29 +1371,9 @@ const io = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
 },{threshold:0.08, rootMargin:'0px 0px -40px 0px'});
 els.forEach(el=>io.observe(el));
-
+ 
 // ---- Testi scroll ----
 const ts = document.getElementById('ts');
 document.getElementById('tLeft').onclick = ()=>ts.scrollBy({left:-360,behavior:'smooth'});
 document.getElementById('tRight').onclick = ()=>ts.scrollBy({left:360,behavior:'smooth'});
-
-// ---- Booking form -> WhatsApp ----
-function handleSubmit(button){
-  const form = button.closest('.booking-form');
-  const inputs = form.querySelectorAll('input, select, textarea');
-  const [firstName, lastName, phone, preferredDate, preferredTime, area, jewelry] = inputs;
-  const parts = [
-    "Hi Sparkle! I'd like to book a jewelry cleaning visit.",
-    `Name: ${[firstName.value, lastName.value].filter(Boolean).join(' ') || 'Not provided'}`,
-    `WhatsApp: ${phone.value || 'Not provided'}`,
-    `Preferred date: ${preferredDate.value || 'Flexible'}`,
-    `Preferred time: ${preferredTime.value || 'Flexible'}`,
-    `Area: ${area.value || 'Not provided'}`,
-    `Jewelry: ${jewelry.value || 'Not specified'}`
-  ];
-  const url = `https://wa.me/201119691116?text=${encodeURIComponent(parts.join('\n'))}`;
-  window.open(url, '_blank', 'noopener');
-}
 </script>
-</body>
-</html>
