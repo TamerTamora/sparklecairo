@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,300;1,600;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
 :root {
   --ink:    #1C1108;
   --gold:   #C8972A;
@@ -19,7 +19,7 @@
   --muted:  #5A4A35;
   --white:  #FFFFFF;
 }
- 
+
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Outfit', sans-serif;
@@ -27,10 +27,10 @@ body {
   color: var(--ink);
   overflow-x: hidden;
 }
- 
+
 /* ===== SPARKLE CANVAS ===== */
 #fx { position: fixed; inset: 0; pointer-events: none; z-index: 900; }
- 
+
 /* ===== NAV ===== */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
@@ -62,7 +62,7 @@ nav {
   display: inline-flex; align-items: center; gap: 6px;
 }
 .nav-book:hover { background: #1DA851 !important; transform: translateY(-2px); }
- 
+
 /* ===== HERO ===== */
 .hero {
   min-height: 100vh;
@@ -72,7 +72,7 @@ nav {
   gap: 60px;
   position: relative; overflow: hidden;
 }
- 
+
 /* diagonal bg split */
 .hero::before {
   content: '';
@@ -82,10 +82,10 @@ nav {
   clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
   z-index: 0;
 }
- 
+
 .hero-left { position: relative; z-index: 2; }
 .hero-right { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; }
- 
+
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
@@ -96,7 +96,7 @@ nav {
 }
 .hero-eyebrow span { animation: blink 2s ease infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
- 
+
 .hero-h1 {
   font-family: 'Fraunces', serif;
   font-size: clamp(3rem, 5.5vw, 5.5rem);
@@ -109,19 +109,19 @@ nav {
   font-style: italic; font-weight: 300;
   color: var(--gold);
 }
- 
+
 .hero-sub {
   font-size: 1rem; font-weight: 400; line-height: 1.8;
   color: var(--muted); max-width: 440px;
   animation: fadeUp 0.7s ease 0.4s both;
   margin-bottom: 44px;
 }
- 
+
 .hero-actions {
   display: flex; gap: 14px; flex-wrap: wrap;
   animation: fadeUp 0.7s ease 0.55s both;
 }
- 
+
 .btn-wa {
   display: inline-flex; align-items: center; gap: 9px;
   background: #25D366; color: white;
@@ -140,7 +140,7 @@ nav {
   transition: all 0.3s;
 }
 .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
- 
+
 /* hero right — visual */
 .hero-visual {
   display: flex; flex-direction: column; align-items: center; gap: 24px;
@@ -171,7 +171,7 @@ nav {
   animation: gemFloat 4s ease-in-out infinite;
 }
 @keyframes gemFloat { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-12px); } }
- 
+
 .bubbles {
   position: absolute; inset: 0; pointer-events: none;
 }
@@ -185,7 +185,7 @@ nav {
   0%,100%{ transform: translateY(0) scale(1); opacity: 0.7; }
   50%{ transform: translateY(-18px) scale(1.1); opacity: 1; }
 }
- 
+
 .hero-proof {
   display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
 }
@@ -199,7 +199,7 @@ nav {
   font-size: 1.6rem; font-weight: 700; color: var(--gold); line-height: 1;
 }
 .proof-label { font-size: 0.72rem; font-weight: 500; color: var(--muted); margin-top: 4px; }
- 
+
 /* ===== WHAT IS ULTRASONIC ===== */
 .explainer {
   padding: 110px 60px;
@@ -245,7 +245,7 @@ nav {
   color: rgba(255,255,255,0.85);
   font-weight: 400; position: relative; z-index: 1;
 }
- 
+
 .explainer-right {}
 .section-eyebrow {
   font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
@@ -264,7 +264,7 @@ nav {
   font-size: 0.92rem; line-height: 1.85;
   color: var(--muted); font-weight: 400; margin-bottom: 40px;
 }
- 
+
 .results-list { display: flex; flex-direction: column; gap: 14px; }
 .result-item {
   display: flex; align-items: flex-start; gap: 14px;
@@ -277,7 +277,7 @@ nav {
 .result-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
 .result-text { font-size: 0.86rem; font-weight: 500; color: var(--ink); line-height: 1.5; }
 .result-text span { display: block; font-size: 0.78rem; font-weight: 400; color: var(--muted); margin-top: 3px; }
- 
+
 /* ===== HOW IT WORKS ===== */
 .how {
   background: var(--warm);
@@ -324,7 +324,7 @@ nav {
   font-size: 1.1rem; font-weight: 600; color: var(--ink); margin-bottom: 10px;
 }
 .step-desc { font-size: 0.82rem; font-weight: 400; color: var(--muted); line-height: 1.7; }
- 
+
 /* time badge */
 .time-badge {
   display: flex; align-items: center; justify-content: center;
@@ -338,7 +338,7 @@ nav {
   box-shadow: 0 8px 24px rgba(28,17,8,0.2);
 }
 .time-pill .t { color: var(--gold-l); }
- 
+
 /* ===== WHAT GETS CLEAN ===== */
 .whatclean {
   padding: 110px 60px;
@@ -372,7 +372,7 @@ nav {
   margin-top: 16px; font-size: 0.75rem; font-weight: 600;
   color: var(--gold); letter-spacing: 0.05em;
 }
- 
+
 /* ===== AREAS ===== */
 .areas {
   background: var(--ink); padding: 100px 60px;
@@ -390,7 +390,7 @@ nav {
 .areas-header .section-h { color: white; }
 .areas-header .section-h em { color: var(--gold-l); }
 .areas-header .section-p { color: rgba(255,255,255,0.75); }
- 
+
 .area-chips { display: flex; flex-wrap: wrap; gap: 12px; }
 .area-chip {
   display: flex; align-items: center; gap: 8px;
@@ -405,7 +405,7 @@ nav {
   border-style: dashed; color: rgba(255,255,255,0.45);
   font-style: italic; font-size: 0.8rem;
 }
- 
+
 /* ===== TESTIMONIALS ===== */
 .testi { padding: 110px 60px; }
 .testi-header { margin-bottom: 52px; }
@@ -452,7 +452,7 @@ nav {
   transition: all 0.25s;
 }
 .tnav-btn:hover { background: var(--gold); color: white; border-color: var(--gold); }
- 
+
 /* ===== BOOKING ===== */
 .booking {
   background: linear-gradient(160deg, var(--warm) 0%, #EDD9A3 100%);
@@ -466,7 +466,7 @@ nav {
 .booking-left {}
 .booking-left .section-h { margin-bottom: 16px; }
 .booking-left .section-p { margin-bottom: 32px; }
- 
+
 .wa-block {
   background: #25D366; border-radius: 20px; padding: 28px 28px;
   display: flex; gap: 18px; align-items: center;
@@ -480,16 +480,16 @@ nav {
 .wa-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 4px; }
 .wa-number { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 700; color: white; }
 .wa-sub { font-size: 0.78rem; color: rgba(255,255,255,0.8); margin-top: 3px; }
- 
- 
+
+
 .info-chips { display: flex; flex-direction: column; gap: 12px; }
 .info-chip {
   display: flex; align-items: center; gap: 12px;
   font-size: 0.83rem; font-weight: 400; color: var(--muted);
 }
 .info-chip span { font-size: 1.1rem; }
- 
- 
+
+
 .booking-right { display: flex; align-items: center; justify-content: center; }
 .wa-cta-box {
   background: white; border-radius: 28px; padding: 44px 40px;
@@ -519,7 +519,7 @@ nav {
   gap: 8px; flex-wrap: wrap;
   font-size: 0.75rem; color: var(--muted); font-weight: 600;
 }
- 
+
 /* ===== FOOTER ===== */
 footer {
   background: var(--ink); color: white; padding: 60px 60px 36px;
@@ -556,7 +556,7 @@ footer {
   text-decoration: none; transition: all 0.25s;
 }
 .soc-btn:hover { background: var(--gold); color: white; }
- 
+
 /* sticky WhatsApp */
 .wa-float {
   position: fixed; bottom: 20px; right: 20px; z-index: 300;
@@ -572,7 +572,7 @@ footer {
 .wa-float:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.6); }
 @keyframes waPop { from{ transform: scale(0) translateY(20px); opacity:0; } to{ transform: scale(1) translateY(0); opacity:1; } }
 .wa-float-label { display: none; }
- 
+
 /* ===== PRICING ===== */
 .pricing {
   background: var(--ink);
@@ -591,7 +591,7 @@ footer {
 .pricing-header .section-h { color: white; }
 .pricing-header .section-h em { color: var(--gold-l); }
 .pricing-header .section-p { color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto; }
- 
+
 .pricing-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -599,7 +599,7 @@ footer {
   position: relative; z-index: 1;
   max-width: 1000px; margin: 0 auto;
 }
- 
+
 .price-card {
   background: rgba(255,255,255,0.05);
   border: 1.5px solid rgba(200,151,42,0.2);
@@ -620,7 +620,7 @@ footer {
   box-shadow: 0 24px 60px rgba(200,151,42,0.35);
 }
 .price-card.featured:hover { transform: scale(1.04) translateY(-6px); }
- 
+
 .price-badge {
   display: inline-block;
   background: var(--ink); color: var(--gold);
@@ -629,20 +629,20 @@ footer {
   margin-bottom: 24px; align-self: flex-start;
 }
 .price-card.featured .price-badge { background: rgba(28,17,8,0.25); color: white; }
- 
+
 .price-name {
   font-family: 'Fraunces', serif;
   font-size: 1.3rem; font-weight: 700;
   color: white; margin-bottom: 8px;
 }
 .price-card.featured .price-name { color: var(--ink); }
- 
+
 .price-tagline {
   font-size: 0.8rem; color: rgba(255,255,255,0.8);
   font-weight: 400; line-height: 1.5; margin-bottom: 32px;
 }
 .price-card.featured .price-tagline { color: rgba(28,17,8,0.75); }
- 
+
 .price-amount {
   display: flex; align-items: flex-end; gap: 6px;
   margin-bottom: 6px;
@@ -658,20 +658,20 @@ footer {
   margin-bottom: 8px;
 }
 .price-card.featured .price-currency { color: rgba(28,17,8,0.65); }
- 
+
 .price-saving {
   font-size: 0.75rem; font-weight: 600;
   color: #7EDD9A; margin-bottom: 28px;
 }
 .price-card.featured .price-saving { color: rgba(28,17,8,0.7); }
 .price-no-saving { margin-bottom: 28px; height: 18px; } /* spacer */
- 
+
 .price-divider {
   height: 1px; background: rgba(255,255,255,0.1);
   margin-bottom: 24px;
 }
 .price-card.featured .price-divider { background: rgba(28,17,8,0.15); }
- 
+
 .price-features { list-style: none; display: flex; flex-direction: column; gap: 12px; flex: 1; }
 .price-features li {
   display: flex; align-items: center; gap: 10px;
@@ -689,7 +689,7 @@ footer {
 .price-card.featured .price-features li::before {
   background: rgba(28,17,8,0.15); color: var(--ink);
 }
- 
+
 .price-cta {
   margin-top: 32px;
   display: flex; align-items: center; justify-content: center; gap: 8px;
@@ -702,7 +702,7 @@ footer {
 .price-cta:hover { background: #1DA851; transform: translateY(-2px); }
 .price-card.featured .price-cta { background: var(--ink); color: white; box-shadow: 0 4px 14px rgba(28,17,8,0.25); }
 .price-card.featured .price-cta:hover { background: #2E1C08; }
- 
+
 /* per-piece note */
 .pricing-note {
   text-align: center; margin-top: 40px;
@@ -710,14 +710,14 @@ footer {
   position: relative; z-index: 1;
 }
 .pricing-note strong { color: rgba(255,255,255,0.9); }
- 
+
 /* ANIMATIONS */
 @keyframes fadeUp { from{ opacity:0; transform:translateY(28px); } to{ opacity:1; transform:translateY(0); } }
 .reveal { opacity:1; transform:none; transition: opacity 0.7s ease, transform 0.7s ease; }
 .js-ready .reveal { opacity:0; transform:translateY(28px); }
 .js-ready .reveal.in { opacity:1; transform:none; }
 .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
- 
+
 /* ── TABLET 900px ── */
 @media (max-width: 900px) {
   nav { padding: 14px 20px; }
@@ -728,7 +728,7 @@ footer {
     padding: 9px 18px; border-radius: 100px;
     font-size: 0.82rem; font-weight: 700;
   }
- 
+
   .hero { grid-template-columns: 1fr; padding: 90px 20px 56px; gap: 36px; text-align: center; min-height: auto; }
   .hero::before { width: 100%; clip-path: none; top: auto; bottom: 0; height: 30%; opacity: 0.4; }
   .hero-left { display: flex; flex-direction: column; align-items: center; }
@@ -737,7 +737,7 @@ footer {
   .hero-actions { justify-content: center; }
   .ring-anim { width: 200px; height: 200px; }
   .hero-proof { justify-content: center; }
- 
+
   .explainer { grid-template-columns: 1fr; padding: 72px 20px; gap: 40px; }
   .how { padding: 72px 20px; }
   .steps { grid-template-columns: 1fr 1fr; gap: 36px; }
@@ -757,11 +757,11 @@ footer {
   .footer-top { flex-direction: column; gap: 28px; }
   .wa-float { bottom: 16px; right: 16px; padding: 12px 18px; font-size: 0.84rem; }
 }
- 
+
 /* ── MOBILE 580px ── */
 @media (max-width: 580px) {
   nav { padding: 12px 16px; }
- 
+
   .hero { padding: 76px 16px 48px; gap: 28px; }
   .hero-h1 { font-size: clamp(2.2rem, 8.5vw, 3.2rem); }
   .hero-sub { font-size: 0.95rem; }
@@ -773,47 +773,47 @@ footer {
   .proof-chip { padding: 10px 14px; flex: 1; min-width: 0; }
   .proof-num { font-size: 1.3rem; }
   .proof-label { font-size: 0.65rem; }
- 
+
   .section-h { font-size: clamp(1.6rem, 6vw, 2.2rem); }
- 
+
   .explainer { padding: 56px 16px; gap: 32px; }
   .explainer-visual { padding: 36px 28px; border-radius: 24px; }
   .explainer-visual h3 { font-size: 1.5rem; }
- 
+
   .how { padding: 56px 16px; }
   .steps { grid-template-columns: 1fr; }
   .step { padding-bottom: 32px; }
   .step-num { width: 58px; height: 58px; font-size: 1.3rem; margin-bottom: 16px; }
   .time-pill { font-size: 0.8rem; padding: 12px 20px; flex-wrap: wrap; gap: 6px; justify-content: center; }
- 
+
   .whatclean { padding: 56px 16px; }
   .whatclean-grid { grid-template-columns: 1fr; gap: 12px; }
   .clean-card { padding: 28px 24px; border-radius: 20px; }
- 
+
   .pricing { padding: 56px 16px; }
   .pricing-grid { max-width: 100%; }
   .price-card { padding: 32px 24px; border-radius: 24px; }
   .price-num { font-size: 2.8rem; }
   .price-cta { font-size: 0.95rem; padding: 15px; }
- 
+
   .areas { padding: 56px 16px; }
   .area-chip { padding: 10px 18px; font-size: 0.82rem; }
- 
+
   .testi { padding: 56px 16px; }
   .tcard { min-width: 280px; padding: 28px 24px; }
   .tcard-text { font-size: 0.92rem; }
- 
+
   .booking { padding: 56px 16px; }
   .wa-block { padding: 22px 20px; gap: 14px; border-radius: 16px; }
   .wa-number { font-size: 1.05rem; }
- 
+
   footer { padding: 40px 16px 80px; }
   .footer-top { flex-direction: column; gap: 24px; }
   .footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
- 
+
   .wa-float { bottom: 14px; right: 14px; padding: 12px 16px; font-size: 0.82rem; }
 }
- 
+
 /* ── VERY SMALL 380px ── */
 @media (max-width: 380px) {
   .hero-h1 { font-size: 2rem; }
@@ -822,10 +822,10 @@ footer {
   .tcard { min-width: 260px; }
   .wa-float { padding: 11px 14px; font-size: 0.78rem; }
 }
- 
+
 /* ===== MOBILE FIXES ===== */
 @media (max-width: 600px) {
- 
+
   /* Fix 1: Hero buttons — normal size, not giant blobs */
   .hero-actions {
     flex-direction: column;
@@ -841,7 +841,7 @@ footer {
     display: flex;
     align-items: center;
   }
- 
+
   /* Fix 2: Area chips — wrap side by side */
   .area-chips {
     display: flex !important;
@@ -855,7 +855,7 @@ footer {
     font-size: 0.78rem !important;
     border-radius: 100px;
   }
- 
+
   /* Fix 3: WhatsApp green card — compact size */
   .wa-block {
     padding: 16px 18px !important;
@@ -867,18 +867,18 @@ footer {
   .wa-label { font-size: 0.6rem !important; }
   .wa-sub { font-size: 0.7rem !important; }
 }
- 
+
 </style>
 </head>
 <body>
- 
+
 <canvas id="fx"></canvas>
- 
+
 <!-- Sticky WhatsApp -->
 <a href="https://wa.me/201000000000?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20a%20jewelry%20cleaning%20visit." class="wa-float" target="_blank">
   💬 Book on WhatsApp
 </a>
- 
+
 <!-- NAV -->
 <nav>
   <a href="#" class="logo">
@@ -893,7 +893,7 @@ footer {
     <li><a href="https://wa.me/201000000000?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20a%20jewelry%20cleaning%20visit." class="nav-book" target="_blank">💬 Book on WhatsApp</a></li>
   </ul>
 </nav>
- 
+
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
@@ -913,7 +913,7 @@ footer {
       <a href="#pricing" class="btn-outline">See Pricing ↓</a>
     </div>
   </div>
- 
+
   <div class="hero-right">
     <div class="hero-visual">
       <div class="ring-anim">
@@ -945,7 +945,7 @@ footer {
     </div>
   </div>
 </section>
- 
+
 <!-- WHAT IS ULTRASONIC -->
 <section class="explainer" id="about">
   <div class="explainer-visual reveal">
@@ -995,7 +995,7 @@ footer {
     </div>
   </div>
 </section>
- 
+
 <!-- HOW IT WORKS -->
 <section class="how" id="how">
   <div class="how-header reveal">
@@ -1032,7 +1032,7 @@ footer {
     <div class="time-pill">⏱ Average visit: <span class="t">&nbsp;30 – 45 minutes</span> &nbsp;·&nbsp; 7 days a week, 9am – 8pm</div>
   </div>
 </section>
- 
+
 <!-- WHAT WE CLEAN -->
 <section class="whatclean">
   <p class="section-eyebrow reveal">What We Clean</p>
@@ -1076,7 +1076,7 @@ footer {
     </div>
   </div>
 </section>
- 
+
 <!-- PRICING -->
 <section class="pricing" id="pricing">
   <div class="pricing-header reveal">
@@ -1084,81 +1084,75 @@ footer {
     <h2 class="section-h">Simple, honest <em>pricing.</em></h2>
     <p class="section-p">Pay per piece, or save more with a bundle. The more you bring, the better the deal — and we're already at your door anyway.</p>
   </div>
- 
+
   <div class="pricing-grid">
- 
+
     <!-- Per piece -->
     <div class="price-card reveal">
-      <span class="price-badge">Per Piece</span>
-      <div class="price-name">Single Clean</div>
-      <div class="price-tagline">Perfect if you have one or two pieces to freshen up.</div>
+      <span class="price-badge">Get Started</span>
+      <div class="price-name">Starter Bundle</div>
+      <div class="price-tagline">Try the service with your most-worn pieces. Fast, easy, no commitment.</div>
       <div class="price-amount">
         <span class="price-num">250</span>
         <span class="price-currency">EGP</span>
       </div>
-      <div class="price-no-saving"></div>
+      <div class="price-saving">83 EGP per piece</div>
       <div class="price-divider"></div>
       <ul class="price-features">
-        <li>1 piece cleaned on the spot</li>
+        <li>Up to 3 pieces cleaned on the spot</li>
         <li>Ultrasonic deep clean</li>
         <li>Specialist comes to you</li>
-        <li>Done in ~10 minutes</li>
         <li>Pay cash or card</li>
       </ul>
-      <a href="https://wa.me/201000000000?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20a%20Single%20Clean%20(250%20EGP)." class="price-cta" target="_blank">💬 Book on WhatsApp</a>
+      <a href="https://wa.me/201000000000?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20the%20Starter%20Bundle%20(250%20EGP%2C%20up%20to%203%20pieces)." class="price-cta" target="_blank">💬 Book on WhatsApp</a>
     </div>
- 
+
     <!-- Bundle 3 — featured -->
     <div class="price-card featured reveal d1">
       <span class="price-badge">★ Most Popular</span>
-      <div class="price-name">3-Piece Bundle</div>
-      <div class="price-tagline">The sweet spot — clean your rings, bracelet, and necklace in one visit.</div>
+      <div class="price-name">Collection</div>
+      <div class="price-tagline">5 pieces covered — or add just 150 EGP and get everything cleaned with Unlimited.</div>
       <div class="price-amount">
-        <span class="price-num">600</span>
+        <span class="price-num">550</span>
         <span class="price-currency">EGP</span>
       </div>
-      <div class="price-saving">You save 150 EGP vs. per piece</div>
+      <div class="price-saving">110 EGP per piece — or Unlimited for just 150 EGP more</div>
       <div class="price-divider"></div>
       <ul class="price-features">
-        <li>3 pieces cleaned on the spot</li>
+        <li>Up to 5 pieces cleaned on the spot</li>
         <li>Ultrasonic deep clean</li>
         <li>Specialist comes to you</li>
-        <li>Done in ~20 minutes</li>
         <li>Pay cash or card</li>
-        <li>150 EGP saved</li>
       </ul>
-      <a href="https://wa.me/201000000000?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20the%203-Piece%20Bundle%20(600%20EGP)." class="price-cta" target="_blank">💬 Book on WhatsApp</a>
+      <a href="https://wa.me/201000000000?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20the%20Collection%20Bundle%20(550%20EGP%2C%20up%20to%205%20pieces)." class="price-cta" target="_blank">💬 Book on WhatsApp</a>
     </div>
- 
+
     <!-- Bundle 5 -->
     <div class="price-card reveal d2">
-      <span class="price-badge">Best Value</span>
-      <div class="price-name">5-Piece Bundle</div>
-      <div class="price-tagline">Clean your full collection in one visit — the whole family benefits.</div>
+      <span class="price-badge">✦ Best Value</span>
+      <div class="price-name">Unlimited ✦</div>
+      <div class="price-tagline">Every single piece in one visit. Just 150 EGP more than Collection — for everything you own.</div>
       <div class="price-amount">
-        <span class="price-num">900</span>
+        <span class="price-num">700</span>
         <span class="price-currency">EGP</span>
       </div>
-      <div class="price-saving">You save 350 EGP vs. per piece</div>
+      <div class="price-saving">Just 150 EGP more than Collection — unlimited pieces</div>
       <div class="price-divider"></div>
       <ul class="price-features">
-        <li>5 pieces cleaned on the spot</li>
+        <li>Every piece you own — no limit</li>
         <li>Ultrasonic deep clean</li>
         <li>Specialist comes to you</li>
-        <li>Done in ~30 minutes</li>
         <li>Pay cash or card</li>
-        <li>350 EGP saved</li>
+        <li>Best value — especially for 7+ pieces</li>
       </ul>
-      <a href="https://wa.me/201000000000?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20the%205-Piece%20Bundle%20(900%20EGP)." class="price-cta" target="_blank">💬 Book on WhatsApp</a>
+      <a href="https://wa.me/201000000000?text=Hi%20Sparkle!%20I%27d%20like%20to%20book%20the%20Unlimited%20Bundle%20(700%20EGP)." class="price-cta" target="_blank">💬 Book on WhatsApp</a>
     </div>
- 
+
   </div>
- 
-  <p class="pricing-note reveal">
-    Have more than 5 pieces? <a href="https://wa.me/201000000000?text=Hi%20Sparkle!%20I%27d%20like%20a%20custom%20quote%20for%20more%20than%205%20pieces." target="_blank" style="color:var(--gold-l);font-weight:600;">💬 WhatsApp us for a custom price</a>
-  </p>
+
+
 </section>
- 
+
 <!-- AREAS -->
 <section class="areas" id="areas">
   <div class="areas-header reveal">
@@ -1182,7 +1176,7 @@ footer {
     <div class="area-chip more"><a href="https://wa.me/201000000000?text=Hi!%20Is%20my%20area%20covered%3F" target="_blank" style="color:inherit;text-decoration:none;">+ WhatsApp us for other areas</a></div>
   </div>
 </section>
- 
+
 <!-- TESTIMONIALS -->
 <section class="testi" id="reviews">
   <div class="testi-header">
@@ -1241,7 +1235,7 @@ footer {
     <button class="tnav-btn" id="tRight">→</button>
   </div>
 </section>
- 
+
 <!-- BOOK ON WHATSAPP -->
 <section class="booking" id="booking">
   <div class="booking-inner">
@@ -1273,18 +1267,18 @@ footer {
           💬 Book on WhatsApp Now
         </a>
         <div class="wa-cta-chips">
-          <span>250 EGP / piece</span>
+          <span>250 EGP / 3 pieces</span>
           <span>·</span>
-          <span>600 EGP / 3 pieces</span>
+          <span>550 EGP / 5 pieces</span>
           <span>·</span>
-          <span>900 EGP / 5 pieces</span>
+          <span>700 EGP / unlimited</span>
         </div>
       </div>
     </div>
   </div>
 </section>
- 
- 
+
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
@@ -1318,14 +1312,14 @@ footer {
     </div>
   </div>
 </footer>
- 
+
 <script>
 // ---- Sparkle canvas ----
 const canvas = document.getElementById('fx');
 const ctx = canvas.getContext('2d');
 function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
 resize(); window.addEventListener('resize', resize);
- 
+
 const sparks = [];
 const colors = ['#C8972A','#F0D080','#EAD9BF','#ffffff','#B84A1E'];
 class Spark {
@@ -1355,14 +1349,14 @@ document.addEventListener('mousemove', e=>{
   if(Math.random()>0.35) return;
   for(let i=0;i<3;i++) sparks.push(new Spark(e.clientX,e.clientY));
 });
- 
+
 // Touch support for mobile sparkles while scrolling
 document.addEventListener('touchmove', e=>{
   if(Math.random()>0.5) return;
   const touch = e.touches[0];
   for(let i=0;i<2;i++) sparks.push(new Spark(touch.clientX, touch.clientY));
 }, {passive: true});
- 
+
 // Tap sparkles on mobile
 document.addEventListener('touchstart', e=>{
   const touch = e.touches[0];
@@ -1376,7 +1370,7 @@ document.addEventListener('touchstart', e=>{
   }
   requestAnimationFrame(loop);
 })();
- 
+
 // ---- Scroll reveal ----
 document.body.classList.add('js-ready');
 const els = document.querySelectorAll('.reveal');
@@ -1384,7 +1378,7 @@ const io = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
 },{threshold:0.08, rootMargin:'0px 0px -40px 0px'});
 els.forEach(el=>io.observe(el));
- 
+
 // ---- Testi scroll ----
 const ts = document.getElementById('ts');
 document.getElementById('tLeft').onclick = ()=>ts.scrollBy({left:-360,behavior:'smooth'});
